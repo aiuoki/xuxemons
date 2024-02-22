@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import xuxemons from '../assets/json/xuxemons.json';
+import { Xuxemon } from './models/xuxemon.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'xuxemons';
+  xuxemons: Xuxemon[] = [];
+
+  ngOnInit() {
+    const json = xuxemons as unknown;
+    this.xuxemons = json as Xuxemon[];
+  }
 }

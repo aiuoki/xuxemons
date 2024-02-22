@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { XuxemonComponent } from './xuxemon/xuxemon.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    XuxemonComponent
   ],
   imports: [
     BrowserModule

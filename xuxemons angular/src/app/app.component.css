@@ -1,0 +1,8 @@
+.xuxemons {
+    background-color: #655f68;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
