@@ -1,7 +1,4 @@
-
-
 .xuxemon {
-    
     width: 200px;
     height: 230px;
     border: 2px solid #e0e0e0;
@@ -16,12 +13,12 @@
     gap: 15px;
 }
 
-img {
-    height: 100px;
+.xuxemon * {
+    margin: 0;
 }
 
-img, h1, h2 {
-    margin: 0;
+img {
+    height: 100px;
 }
 
 h1 {
