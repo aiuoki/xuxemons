@@ -26,4 +26,23 @@ export class UsuarioService {
       })
     );
   }
+
+  loginUsuario(email: string, password: string): Observable<any> {
+    return this.http.post("https://reqres.in/api/login", {
+      email: email,
+      password: password
+    }).pipe(
+      tap(() => {
+        alert("Usuario logueado");
+      }),
+      catchError((err) => {
+        if (err.error && err.error.error === "Missing password") {
+          alert("Falta la contraseña");
+        } else {
+          alert("Error en el login");
+        }
+        return of (err);
+      })
+    );
+  }
 }

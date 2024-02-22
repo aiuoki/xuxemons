@@ -3,8 +3,6 @@ nav {
     background-color: #8735a7;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 8px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
     display: flex;
 }
 
