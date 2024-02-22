@@ -1,0 +1,11 @@
+.contenido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 93vh;
+}
+
+.contenido p {
+    font-size: 5em;
+    color: rgb(222, 55, 55);
+}
