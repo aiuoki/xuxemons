@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+
+body {
+    font-family: 'Concert One', cursive;
+    background-color: #655f68;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #8735a7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+nav a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 10px;
+
+}
+.tarjetas {
+    display: flex;
+    flex-direction: row;
+    padding-left: 80px;
+    padding-right: 80px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.tarjeta {
+    width: 200px;
+    height: 230px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0   .1);
+    text-align: center;
+}
+
+
+.imagenXuxemon {
+    width: 50%;
+    margin: 20px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+h1 ,h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #5c5c5c;
+    margin: 0%;
+    margin-top: 10px;
+    ;
+}
+
+/* Path: XuxemonsFront/tarjetaPokemon/tarjetaPokemon.js */
