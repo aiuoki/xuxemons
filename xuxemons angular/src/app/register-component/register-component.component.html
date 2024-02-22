@@ -3,24 +3,18 @@
         <img src="../../assets/livestock.png">
         <h1 class="titulo">Registro</h1>
     
-        <form action="registro.php" method="post">
+        <form [formGroup]="formRegister" (ngSubmit)="registrarUsuario()">
             <div class="input">
-                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="email" formControlName="email" placeholder="Email">
             </div>
             <div class="input">
-                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="password" name="password" formControlName="password" placeholder="Contraseña">
             </div>
             <div class="input">
-                <input type="email" name="email" placeholder="Email">
-            </div>
-            <div class="input">
-                <input type="password" name="password" placeholder="Contraseña">
-            </div>
-            <div class="input">
-                <input type="password" name="confirmPassword" placeholder="Confirmar contraseña">
+                <input type="password" name="password2" formControlName="password2" placeholder="Confirmar contraseña">
             </div>
     
-            <input type="submit" value="Registrarse">
+            <input type="submit" [ngClass]="formRegister.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formRegister.valid" value="Registrarse">
             <p>¿Ya tienes cuenta? <a href="login">Ingresar</a></p>
         </form>
     </div>
