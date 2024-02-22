@@ -1,3 +1,16 @@
+nav {
+    padding: 20px;
+    background-color: #8735a7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 8px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 .xuxemons {
     padding: 50px;
     display: grid;
