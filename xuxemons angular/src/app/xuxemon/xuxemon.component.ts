@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import xuxemons from '../../assets/json/xuxemons.json';
 import { Xuxemon } from '../models/xuxemon.model';
 
 @Component({
@@ -7,16 +8,9 @@ import { Xuxemon } from '../models/xuxemon.model';
   styleUrls: ['./xuxemon.component.css']
 })
 export class XuxemonComponent {
-  @Input() xuxemon: Xuxemon;
-
-  constructor() {
-    this.xuxemon = {nombre: "", tipo: "", archivo: ""}
-  }
-
-  ngOnInit() {
-    if (this.xuxemon && this.xuxemon.archivo) {
-      this.xuxemon.tipo = this.xuxemon.tipo.toUpperCase();
-      this.xuxemon.archivo = "../../assets/xuxemons/" + this.xuxemon.archivo;
-    }
-  }
+  xuxemons: Xuxemon[] = xuxemons.map(xuxemon => ({
+    ...xuxemon, 
+    tipo: xuxemon.tipo.toUpperCase(),
+    archivo: `../../assets/xuxemons/${xuxemon.archivo}`
+  }));
 }

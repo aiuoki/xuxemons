@@ -5,6 +5,7 @@ nav {
     margin: 8px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+    display: flex;
 }
 
 nav a {
@@ -13,9 +14,10 @@ nav a {
     font-size: 20px;
 }
 
-.xuxemons {
-    padding: 50px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 30px;
+.botones {
+    margin-left: auto;
+}
+
+nav button {
+    margin-left: 20px;
 }
