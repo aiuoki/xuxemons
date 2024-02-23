@@ -5,6 +5,15 @@
     
         <form [formGroup]="formRegister" (ngSubmit)="registrarUsuario()">
             <div class="input">
+                <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
+            </div>
+            <div class="input">
+                <input type="text" name="apellidos" formControlName="apellidos" placeholder="Apellidos">
+            </div>
+            <div class="input">
+                <input type="text" name="nick" formControlName="nick" placeholder="Nick">
+            </div>
+            <div class="input">
                 <input type="text" name="email" formControlName="email" placeholder="Email">
             </div>
             <div class="input">

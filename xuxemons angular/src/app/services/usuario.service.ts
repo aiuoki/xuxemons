@@ -8,8 +8,11 @@ import { Observable, catchError, of, tap } from 'rxjs';
 export class UsuarioService {
   constructor(private http: HttpClient) { }
 
-  registrarUsuario(email: string, password: string): Observable<any> {
-    return this.http.post("https://reqres.in/api/register", {
+  registrarUsuario(nombre:string, apellidos:string, nick:string, email: string, password: string): Observable<any> {
+    return this.http.post("http://127.0.0.1:8000/api/users", {
+      nombre: nombre,
+      apellidos: apellidos,
+      nick: nick,
       email: email,
       password: password
     }).pipe(
@@ -28,7 +31,7 @@ export class UsuarioService {
   }
 
   loginUsuario(email: string, password: string): Observable<any> {
-    return this.http.post("https://reqres.in/api/login", {
+    return this.http.post("http://127.0.0.1:8000/api/auth", {
       email: email,
       password: password
     }).pipe(

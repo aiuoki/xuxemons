@@ -9,7 +9,7 @@ import { Xuxemon } from '../models/xuxemon.model';
 })
 export class XuxemonComponent {
   xuxemons: Xuxemon[] = xuxemons.map((xuxemon, index) => ({
-    id: index, // o algún otro valor único
+    id: index,
     ...xuxemon, 
     tipo: xuxemon.tipo.toUpperCase(),
     archivo: `../../assets/xuxemons/${xuxemon.archivo}`
