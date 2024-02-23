@@ -27,11 +27,9 @@ class UserController extends Controller
             $data = $request->validate([
                 'nombre' => 'required',
                 'apellidos' => 'required',
-                'fecha_nacimiento' => 'required',
                 'nick' => 'required',
                 'email' => 'required',
                 'password' => 'required',
-                'rol' => 'required|in:administrador,usuario',
             ]);
 
             $user = User::create($data);
