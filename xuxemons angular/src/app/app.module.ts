@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EditarXuxemonComponent } from './editar-xuxemon/editar-xuxemon.component';
 import { CreateXuxemonComponent } from './create-xuxemon/create-xuxemon.component';
+import { ListXuxemonComponent } from './list-xuxemon/list-xuxemon.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateXuxemonComponent } from './create-xuxemon/create-xuxemon.componen
     RegisterComponentComponent,
     ErrorComponentComponent,
     EditarXuxemonComponent,
-    CreateXuxemonComponent
+    CreateXuxemonComponent,
+    ListXuxemonComponent
   ],
   imports: [
     BrowserModule,
