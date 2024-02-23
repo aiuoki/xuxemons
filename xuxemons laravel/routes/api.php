@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\XuxemonController;
+use App\Http\Controllers\AuthController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('auth', [AuthController::class, 'auth'])->name('auth');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('xuxemons', [XuxemonController::class, 'index'])->name('xuxemons.index');
 Route::get('xuxemons/{id}', [XuxemonController::class, 'show'])->name('xuxemons.show');
