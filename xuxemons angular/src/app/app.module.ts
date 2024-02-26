@@ -9,6 +9,9 @@ import { RegisterComponentComponent } from './register-component/register-compon
 import { ErrorComponentComponent } from './error-component/error-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CreateComponent } from './components/xuxemons/create/create.component';
+import { IndexComponent } from './components/xuxemons/index/index.component';
+import { UpdateComponent } from './components/xuxemons/update/update.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     XuxemonComponent,
     LoginComponentComponent,
     RegisterComponentComponent,
-    ErrorComponentComponent
+    ErrorComponentComponent,
+    CreateComponent,
+    IndexComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

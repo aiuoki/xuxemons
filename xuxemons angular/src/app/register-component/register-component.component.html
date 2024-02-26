@@ -4,7 +4,7 @@
             <img src="../../assets/livestock.png">
         </div>
         <h1 class="titulo">Registro</h1>
-    
+        
         <form [formGroup]="formRegister" (ngSubmit)="registrarUsuario()">
             <div class="input">
                 <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
@@ -24,7 +24,7 @@
             <div class="input">
                 <input type="password" name="password2" formControlName="password2" placeholder="Confirmar contraseña">
             </div>
-    
+
             <input type="submit" [ngClass]="formRegister.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formRegister.valid" value="Registrarse">
         </form>
         <div>
