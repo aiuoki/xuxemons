@@ -16,6 +16,15 @@ nav a {
     margin-left: auto;
 }
 
+.botones button {
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Concert One";
+    font-size: 16px;
+}
+
 nav button {
     margin-left: 20px;
 }
