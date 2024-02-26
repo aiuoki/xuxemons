@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Xuxemon } from '../models/xuxemon.model';
+
 @Injectable({
   providedIn: 'root'
 })
-export class XuxemonServicesService {
+export class XuxemonService {
   constructor(private http: HttpClient) { }
 
   GetXuxemons(): Observable<any> {
@@ -50,13 +51,13 @@ export class XuxemonServicesService {
 
   DeleteXuxemon(id:number ): Observable<any> {
     return this.http.delete(`http://127.0.0.1:8000/api/xuxemons/${id}`).pipe(
-    tap(() => {
-      alert("Xuxemon borrado");
-    }),
-    catchError((err) => {
-      alert("Error en el registro");
-      return of (err);
-    })
-  );
+      tap(() => {
+        alert("Xuxemon borrado");
+      }),
+      catchError((err) => {
+        alert("Error en el registro");
+        return of (err);
+      })
+    );
   }
 }
