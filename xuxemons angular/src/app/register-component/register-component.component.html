@@ -1,6 +1,8 @@
-<div class="body">
-    <div class="tarjeta">
-        <img src="../../assets/livestock.png">
+<div class="contenedor">
+    <div class="formulario">
+        <div>
+            <img src="../../assets/livestock.png">
+        </div>
         <h1 class="titulo">Registro</h1>
     
         <form [formGroup]="formRegister" (ngSubmit)="registrarUsuario()">
@@ -24,8 +26,10 @@
             </div>
     
             <input type="submit" [ngClass]="formRegister.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formRegister.valid" value="Registrarse">
-            <p>¿Ya tienes cuenta? <a href="login">Ingresar</a></p>
         </form>
+        <div>
+            <p>¿Ya tienes cuenta? <a href="login">Ingresar</a></p>
+        </div>
     </div>
 </div>
 
