@@ -2,11 +2,11 @@
     <div class="formulario">
         <h1 class="titulo">Crear Xuxemon</h1>
 
-        <form [formGroup]="formLogin" (ngSubmit)="loginUsuario()">
+        <form [formGroup]="form" (ngSubmit)="crearXuxemon()">
             <div class="input">
                 <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
             </div>
-            <select name="tipo">
+            <select name="tipo" formControlName="tipo">
                 <option value="">Selecciona un Tipo</option>
                 <option value="agua">Agua</option>
                 <option value="aire">Aire</option>
@@ -16,7 +16,7 @@
                 <input type="text" name="archivo" formControlName="archivo" placeholder="Archivo">
             </div>
 
-            <input type="submit" [ngClass]="formLogin.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formLogin.valid" value="Ingresar">
+            <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Crear Xuxemon">
         </form>
         <a href="">Volver</a>
     </div>

@@ -10,19 +10,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CreateComponent {
   constructor(public usuarioService: UsuarioService) { }
 
-  formLogin: FormGroup = new FormGroup({
+  form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     tipo: new FormControl('', [Validators.required, Validators.pattern('^(aire|agua|tierra)$')]),
     archivo: new FormControl('', [Validators.required])
   });
   
-  loginUsuario() {
-    const email = this.formLogin.value.email;
-    const password = this.formLogin.value.password;
+  crearXuxemon() {
+    console.log(this.form.value);
+    // const email = this.formLogin.value.email;
+    // const password = this.formLogin.value.password;
 
-    this.usuarioService.loginUsuario(email, password).subscribe({
-      next: value => console.log(value),
-      error: err => alert(err)
-    });
+    // this.usuarioService.loginUsuario(email, password).subscribe({
+    //   next: value => console.log(value),
+    //   error: err => alert(err)
+    // });
   }
 }
