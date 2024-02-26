@@ -14,6 +14,11 @@
     padding: 30px;
 }
 
+img, p {
+    display: inline-block;
+    margin: 0;
+}
+
 img {
     width: 100px;
 }
