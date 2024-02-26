@@ -1,5 +1,5 @@
-<div class="body">
-    <div class="tarjeta">
+<div class="contenedor">
+    <div class="formulario">
         <img src="../../assets/livestock.png">
         <h1 class="titulo">Login</h1>
 
@@ -12,8 +12,8 @@
             </div>
 
             <input type="submit" [ngClass]="formLogin.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formLogin.valid" value="Ingresar">
-            <p>¿Ya tienes cuenta? <a href="register">Registrate</a></p>
         </form>
+        <p>¿Ya tienes cuenta? <a href="register">Registrate</a></p>
     </div>
 </div>
 
