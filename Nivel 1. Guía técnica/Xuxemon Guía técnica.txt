@@ -1,0 +1,53 @@
+﻿Xuxemon Guía técnica
+
+
+
+
+Esta guía tiene como objetivo explicar cómo abrir la página web de Xuxemon en cualquier ordenador con sistema operativo Windows. A continuación, discutiremos los requisitos para acceder al código.
+
+
+En primer lugar, es necesario contar con una conexión a Internet para descargar el código. Para ejecutar el código, se requiere tener instalado Visual Studio. Antes de realizar cualquier acción, es fundamental instalar Angular en el ordenador mediante el siguiente comando:
+
+
+npm install -g @angular/cli
+
+
+Esto instalará globalmente la herramienta angular-cli.
+
+
+También emplearemos Laravel para el backend. Para la instalación de Laravel, será necesario contar con una conexión a una base de datos. Para simplificar este proceso, instalamos XAMPP, que es un conjunto de servidores web multiplataforma diseñado para trabajar con el lenguaje PHP. Para iniciar, accedemos a la página oficial de XAMPP:
+
+
+https://www.apachefriends.org/es/index.html
+
+
+Después de completar el paso anterior, procedemos a descargar Composer. Composer es una herramienta para la gestión de dependencias en PHP.
+
+
+https://getcomposer.org/
+
+
+Después de completar estos pasos, abrimos Visual Studio y accedemos a la carpeta llamada "Main". Una vez abierta, utilizamos la terminal proporcionada por Visual Studio. Abrimos la terminal y ejecutamos el siguiente comando:
+
+cd Laravel
+
+
+Ingresamos al directorio correspondiente a la parte de Laravel. Una vez dentro, es necesario asegurarse de que Apache y MySQL estén activados en XAMPP. Una vez hecho esto, podemos proceder con el siguiente comando:
+
+
+php artisan serve
+
+
+Conseguiremos cargar la parte del backend.
+
+
+Ahora solo falta iniciar la parte de Angular. Para hacerlo, abrimos otra terminal y accedemos con el siguiente comando:
+
+cd Angular
+
+
+Una vez dentro, ejecutamos el siguiente comando:
+ng serve -o
+
+
+Con estos pasos, habremos configurado y ejecutado correctamente la aplicación.
