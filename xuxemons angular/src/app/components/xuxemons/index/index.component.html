@@ -10,11 +10,17 @@
         </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let xuxemon of xuxemons">
+        <tr *ngFor="let xuxemon of xuxemons">
             <td>{{ xuxemon.id }}</td>
-            <td>{{ xuxemon.name }}</td>
-            <td>{{ xuxemon.type }}</td>
-            <td>{{ xuxemon.file }}</td>
-        </tr> -->
+            <td>{{ xuxemon.nombre }}</td>
+            <td>{{ xuxemon.tipo }}</td>
+            <td>{{ xuxemon.archivo }}</td>
+            <td>
+                <button (click)="editarXuxemon(xuxemon.id)">Editar</button>
+            </td>
+            <td>
+                <button (click)="eliminarXuxemon(xuxemon.id)">Eliminar</button>
+            </td>
+        </tr>
     </tbody>
 </table>

@@ -32,7 +32,7 @@ export class XuxemonService {
     );
   }
 
-  storeXuxemon(nombre:string, tipo:string, archivo:string): Observable<any> {
+  store(nombre:string, tipo:string, archivo:string): Observable<any> {
     return this.http.post("http://127.0.0.1:8000/api/xuxemons", {
       nombre: nombre,
       tipo: tipo,
@@ -48,7 +48,7 @@ export class XuxemonService {
     );
   }
 
-  updateXuxemon(id: number, nombre: string, tipo: string, archivo: string): Observable<any> {
+  update(id: number, nombre: string, tipo: string, archivo: string): Observable<any> {
     return this.http.put(`http://127.0.0.1:8000/api/xuxemons/${id}`, {
       nombre: nombre,
       tipo: tipo,
@@ -64,7 +64,7 @@ export class XuxemonService {
     );
   }
 
-  destroyXuxemon(id: number): Observable<any> {
+  destroy(id: number): Observable<any> {
     return this.http.delete(`http://127.0.0.1:8000/api/xuxemons/${id}`).pipe(
       tap(() => {
         alert("Xuxemon eliminado");

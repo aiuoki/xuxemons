@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuarioService } from '../../../services/usuario.service';
+import { XuxemonService } from '../../../services/xuxemon.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  constructor(public usuarioService: UsuarioService) { }
+  constructor(public xuxemonService: XuxemonService) { }
 
   form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
@@ -17,13 +17,13 @@ export class CreateComponent {
   });
   
   crearXuxemon() {
-    console.log(this.form.value);
-    // const email = this.formLogin.value.email;
-    // const password = this.formLogin.value.password;
+    const nombre = this.form.value.nombre;
+    const tipo = this.form.value.tipo;
+    const archivo = this.form.value.archivo;
 
-    // this.usuarioService.loginUsuario(email, password).subscribe({
-    //   next: value => console.log(value),
-    //   error: err => alert(err)
-    // });
+    this.xuxemonService.store(nombre, tipo, archivo).subscribe({
+      next: value => console.log(value),
+      error: err => alert(err)
+    });
   }
 }

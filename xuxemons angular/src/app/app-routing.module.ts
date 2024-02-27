@@ -26,7 +26,7 @@ const routes: Routes = [
         component: CreateComponent
     },
     {
-        path: 'editar-xuxemon',
+        path: 'editar-xuxemon/:id',
         component: UpdateComponent
     },
     {
