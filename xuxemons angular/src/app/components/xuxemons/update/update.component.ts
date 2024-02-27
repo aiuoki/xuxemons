@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { XuxemonService } from '../../../services/xuxemon.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update',
@@ -17,7 +18,7 @@ export class UpdateComponent {
     archivo: new FormControl('', [Validators.required])
   });
 
-  constructor(private route: ActivatedRoute, private xuxemonService: XuxemonService) { }
+  constructor(private route: ActivatedRoute, private xuxemonService: XuxemonService, private router: Router) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -43,7 +44,10 @@ export class UpdateComponent {
     const archivo = this.form.value.archivo;
 
     this.xuxemonService.update(id, nombre, tipo, archivo).subscribe({
-      next: value => console.log(value),
+      next: value => {
+        console.log(value);
+        this.router.navigate(['/mostrar-xuxemons']);
+      },
       error: err => alert(err)
     });
   }
