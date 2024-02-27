@@ -79,10 +79,10 @@ export class XuxemonService {
   xuxemonAleatorio(): Observable<any> {
     return this.http.get("http://127.0.0.1:8000/api/xuxemon/aleatorio").pipe(
       tap(() => {
-        console.log("Xuxemon aleatorio asignado a cada usuario");
+        alert("Xuxemon aleatorio asignado a cada usuario");
       }),
       catchError((err) => {
-        console.log("Error al asignar xuxemon aleatorio a cada usuario");
+        alert("Error al asignar xuxemon aleatorio a cada usuario");
         return of(err);
       })
     );
