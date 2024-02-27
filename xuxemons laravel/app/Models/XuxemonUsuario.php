@@ -9,6 +9,8 @@ class XuxemonUsuario extends Model
 {
     use HasFactory;
 
+    protected $table = 'xuxemons_usuario';
+
     protected $fillable = [
         'id_usuario',
         'id_xuxemon',
