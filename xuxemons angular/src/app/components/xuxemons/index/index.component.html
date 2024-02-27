@@ -20,10 +20,10 @@
                     <td [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | titlecase }}</td>
                     <td>{{ xuxemon.archivo }}</td>
                     <td>
-                        <button (click)="editarXuxemon(xuxemon.id)">Editar</button>
+                        <button (click)="editarXuxemon(xuxemon.id)" class="botonesEdit">Editar</button>
                     </td>
                     <td>
-                        <button (click)="eliminarXuxemon(xuxemon.id)">Eliminar</button>
+                        <button (click)="eliminarXuxemon(xuxemon.id)" class="botonesEli">Eliminar</button>
                     </td>
                 </tr>
             </tbody>
