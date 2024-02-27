@@ -1,6 +1,6 @@
 <div class="contenedor">
     <div class="formulario">
-        <h1 class="titulo">Editar Xuxemon</h1>
+        <h1>Editar Xuxemon</h1>
 
         <form [formGroup]="form" (ngSubmit)="editarXuxemon()">
             <div class="input">
@@ -17,7 +17,7 @@
 
             <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Editar Xuxemon">
         </form>
-        <!-- <a routerLink="">Volver</a> -->
+        <a routerLink="/mostrar-xuxemons">Volver</a>
     </div>
 </div>
 

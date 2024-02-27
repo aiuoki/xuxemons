@@ -1,26 +1,34 @@
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Archivo</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let xuxemon of xuxemons">
-            <td>{{ xuxemon.id }}</td>
-            <td>{{ xuxemon.nombre }}</td>
-            <td>{{ xuxemon.tipo }}</td>
-            <td>{{ xuxemon.archivo }}</td>
-            <td>
-                <button (click)="editarXuxemon(xuxemon.id)">Editar</button>
-            </td>
-            <td>
-                <button (click)="eliminarXuxemon(xuxemon.id)">Eliminar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="contenedor">
+    <div class="form">
+        <h1>Xuxemons</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Archivo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let xuxemon of xuxemons">
+                    <td>{{ xuxemon.id }}</td>
+                    <td>{{ xuxemon.nombre }}</td>
+                    <td>{{ xuxemon.tipo }}</td>
+                    <td>{{ xuxemon.archivo }}</td>
+                    <td>
+                        <button (click)="editarXuxemon(xuxemon.id)">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="eliminarXuxemon(xuxemon.id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a routerLink="/crear-xuxemon">Crear Xuxemon</a>
+    </div>
+</div>
