@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
         $apellidos = ['', 'Ceban'];
         $nicks = ['admin', 'dan'];
         $emails = ['admin@mail.com', 'dan@mail.com'];
+        $roles = ['admin', 'usuario'];
 
         for ($i=0; $i < 2; $i++) {
             //inserta dos usuarios con los datos de prueba
@@ -26,7 +27,8 @@ class UserSeeder extends Seeder
                 'apellidos' => $apellidos[$i],
                 'nick' => $nicks[$i],
                 'email' => $emails[$i],
-                'password' => '$2y$12$flVhDBA.hvTjkZI.9xg1SuOI6eaz2.gBDnECuw5TX3bzMZnI5vYye'
+                'password' => '$2y$12$flVhDBA.hvTjkZI.9xg1SuOI6eaz2.gBDnECuw5TX3bzMZnI5vYye',
+                'rol' => $roles[$i]
             ]);
         }
     }

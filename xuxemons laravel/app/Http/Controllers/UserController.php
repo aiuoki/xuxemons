@@ -30,7 +30,12 @@ class UserController extends Controller
                 'nick' => 'required',
                 'email' => 'required',
                 'password' => 'required',
+                'rol' => 'sometimes',
             ]);
+
+            if(!isset($data['rol'])) {
+                $data['rol'] = 'usuario';
+            }
 
             $user = User::create($data);
             return response()->json(['message' => 'Usuario creado correctamente'], 200);
@@ -44,7 +49,6 @@ class UserController extends Controller
             $data = $request->validate([
                 'nombre' => 'required',
                 'apellidos' => 'required',
-                'fecha_nacimiento' => 'required',
                 'nick' => 'required',
                 'email' => 'required',
                 'password' => 'required',
