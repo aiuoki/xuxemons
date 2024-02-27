@@ -11,10 +11,10 @@ export class XuxemonService {
   index(): Observable<any> {
     return this.http.get("http://127.0.0.1:8000/api/xuxemons").pipe(
       tap(() => {
-        console.log("Xuxemons retrieved");
+        console.log("Xuxemons recogidos");
       }),
       catchError((err) => {
-        console.log("Error retrieving xuxemons");
+        console.log("Error al recoger los xuxemons");
         return of(err);
       })
     );
@@ -23,10 +23,10 @@ export class XuxemonService {
   show(id: number): Observable<any> {
     return this.http.get(`http://127.0.0.1:8000/api/xuxemons/${id}`).pipe(
       tap(() => {
-        console.log("Xuxemon retrieved");
+        console.log("Xuxemon recogido");
       }),
       catchError((err) => {
-        console.log("Error retrieving xuxemon");
+        console.log("Error al recoger el xuxemon");
         return of(err);
       })
     );
@@ -71,6 +71,18 @@ export class XuxemonService {
       }),
       catchError((err) => {
         alert("Error al eliminar el xuxemon");
+        return of(err);
+      })
+    );
+  }
+
+  xuxemonAleatorio(): Observable<any> {
+    return this.http.get("http://127.0.0.1:8000/api/xuxemons/aleatorio").pipe(
+      tap(() => {
+        console.log("Xuxemon aleatorio asignado a cada usuario");
+      }),
+      catchError((err) => {
+        console.log("Error al asignar xuxemon aleatorio a cada usuario");
         return of(err);
       })
     );

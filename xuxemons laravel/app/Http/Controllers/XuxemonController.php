@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RolesUsuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Xuxemon;
+use App\Models\XuxemonUsuario;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Models\XuxemonsUsuario;
 
 class XuxemonController extends Controller
 {
@@ -63,21 +63,18 @@ class XuxemonController extends Controller
     }
 
     public function xuxemonAleatorio() {
-        // Seleccionamos todos los id's de los usuarios con rol de usuario
-        $usuario = [];
-        foreach (RolesUsuario::all() as $usuario) {
-            if ($usuario->id_rol == 2) {
-                $usuario[] = $usuario->id_usuario;
-            }
-        }
-
         // Reccoremos la lista de usuarios con rol de usuario
-        foreach ($usuario as $id) {
-            // Seleccionamos un id aleatorio de la lista de xuxemons
-            $xuxemon = Xuxemon::inRandomOrder()->first();
+        foreach (User::all() as $usuario) {
+            if ($usuario->rol == 'usuario') {
+                // Seleccionamos un id aleatorio de la lista de xuxemons
+                $xuxemon = Xuxemon::inRandomOrder()->first();
 
-            // Asignamos el xuxemon aleatorio al usuario
-            //XuxemonsUsuario::create();
+                // Asignamos el xuxemon aleatorio al usuario
+                XuxemonUsuario::create([
+                    'id_usuario' => $usuario->id,
+                    'id_xuxemon' => $xuxemon->id
+                ]);
+            }
         }
     }
 }

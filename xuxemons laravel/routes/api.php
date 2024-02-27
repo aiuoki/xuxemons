@@ -31,6 +31,9 @@ Route::post('xuxemons', [XuxemonController::class, 'store'])->name('xuxemons.sto
 Route::put('xuxemons/{id}', [XuxemonController::class, 'update'])->name('xuxemons.update');
 Route::delete('xuxemons/{id}', [XuxemonController::class, 'destroy'])->name('xuxemons.destroy');
 
+// Ruta para obtener un xuxemon aleatorio
+Route::get('xuxemons/aleatorio', [XuxemonController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
+
 Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
 Route::post('users', [UserController::class, 'store'])->name('users.store');
