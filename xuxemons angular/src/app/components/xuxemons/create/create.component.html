@@ -1,1 +1,25 @@
-<p>create works!</p>
+<div class="contenedor">
+    <div class="formulario">
+        <h1>Crear Xuxemon</h1>
+
+        <form [formGroup]="form" (ngSubmit)="crearXuxemon()">
+            <div class="input">
+                <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
+            </div>
+            <select name="tipo" formControlName="tipo">
+                <option value="">Selecciona un Tipo</option>
+                <option value="agua">Agua</option>
+                <option value="aire">Aire</option>
+                <option value="tierra">Tierra</option>
+            </select>
+            <div class="input">
+                <input type="text" name="archivo" formControlName="archivo" placeholder="Archivo">
+            </div>
+
+            <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Crear Xuxemon">
+        </form>
+        <a routerLink="/mostrar-xuxemons">Volver</a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

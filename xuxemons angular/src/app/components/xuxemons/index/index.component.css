@@ -1,0 +1,41 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 93vh;
+}
+
+.form {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px;
+}
+
+table, th, td {
+    border: 1px solid #e0e0e0;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #c87575;
+}
+
+.tierra {
+    color: rgb(186, 154, 113);
+}
+
+.agua {
+    color: skyblue;
+}
+
+.aire {
+    color: #e5e5e5;
+    text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
+    1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+}

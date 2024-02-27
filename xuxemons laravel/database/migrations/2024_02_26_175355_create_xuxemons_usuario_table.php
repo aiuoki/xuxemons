@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('xuxemons_usuario', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_xuxemon');
+            $table->timestamps();
+
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_xuxemon')->references('id')->on('xuxemons')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

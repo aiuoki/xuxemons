@@ -11,7 +11,7 @@ export class XuxemonComponent {
   xuxemons: Xuxemon[] = xuxemons.map((xuxemon, index) => ({
     id: index,
     ...xuxemon, 
-    tipo: xuxemon.tipo.toUpperCase(),
+    tipo: xuxemon.tipo,
     archivo: `../../assets/xuxemons/${xuxemon.archivo}`
   }));
 }
