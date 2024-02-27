@@ -40,66 +40,16 @@ h2 {
 }
 
 
-.TIERRA {
+.tierra {
     color: rgb(186, 154, 113);
 }
 
-.AGUA {
+.agua {
     color: skyblue;
 }
 
-.AIRE {
+.aire {
     color: #e5e5e5;
     text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
     1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
-}
-
-
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .xuxemons {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    .xuxemon {
-        width: 150px;
-        height: 180px;
-    }
-
-    img {
-        height: 80px;
-    }
-
-    h1 {
-        font-size: 1.2em;
-    }
-
-    h2 {
-        font-size: 1em;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .xuxemons {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .xuxemon {
-        width: 120px;
-        height: 150px;
-    }
-
-    img {
-        height: 60px;
-    }
-
-    h1 {
-        font-size: 1em;
-    }
-
-    h2 {
-        font-size: 0.8em;
-    }
 }

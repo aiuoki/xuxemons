@@ -2,6 +2,6 @@
     <div class="xuxemon" *ngFor="let xuxemon of xuxemons">
         <img [src]="xuxemon.archivo">
         <h1>{{xuxemon.nombre}}</h1>
-        <h2 [ngClass]="{'TIERRA': xuxemon.tipo === 'TIERRA', 'AGUA': xuxemon.tipo === 'AGUA', 'AIRE': xuxemon.tipo === 'AIRE'}">{{xuxemon.tipo}}</h2>
+        <h2 [ngClass]="{'tierra': xuxemon.tipo === 'TIERRA', 'agua': xuxemon.tipo === 'AGUA', 'aire': xuxemon.tipo === 'AIRE'}">{{xuxemon.tipo}}</h2>
     </div>
 </div>
