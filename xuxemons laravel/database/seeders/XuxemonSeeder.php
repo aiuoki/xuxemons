@@ -15,7 +15,7 @@ class XuxemonSeeder extends Seeder
     {
         // Datos de prueba
         $nombres = ['Bambino', 'Flipper', 'Beebo', 'Cabrales', 'Eldientes'];
-        $tipos = ['Tierra', 'Agua', 'Aire', 'Tierra', 'Agua'];
+        $tipos = ['tierra', 'agua', 'aire', 'tierra', 'agua'];
         $archivos = ['bambino.png', 'flipper.png', 'beebo.png', 'cabrales.png', 'eldientes.png'];
 
         for ($i=0; $i < 5; $i++) {

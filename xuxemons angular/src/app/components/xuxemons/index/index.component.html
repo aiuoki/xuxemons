@@ -17,7 +17,7 @@
                 <tr *ngFor="let xuxemon of xuxemons">
                     <td>{{ xuxemon.id }}</td>
                     <td>{{ xuxemon.nombre }}</td>
-                    <td>{{ xuxemon.tipo }}</td>
+                    <td [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | titlecase }}</td>
                     <td>{{ xuxemon.archivo }}</td>
                     <td>
                         <button (click)="editarXuxemon(xuxemon.id)">Editar</button>

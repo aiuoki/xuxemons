@@ -25,3 +25,17 @@ a {
     text-decoration: none;
     color: #c87575;
 }
+
+.tierra {
+    color: rgb(186, 154, 113);
+}
+
+.agua {
+    color: skyblue;
+}
+
+.aire {
+    color: #e5e5e5;
+    text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
+    1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+}
