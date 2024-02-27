@@ -7,7 +7,7 @@ Para abrir el proyecto de angular ejecutar los siguientes comandos:
 ```bash
   npm install
 
-  ng serve --open
+  ng serve -o
 ```
 
 Para abrir el proyecto de angular ejecutar los siguientes comandos:
