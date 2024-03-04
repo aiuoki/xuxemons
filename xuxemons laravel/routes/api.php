@@ -3,7 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\XuxemonController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\XuxemonUsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +38,4 @@ Route::put('xuxemons/{id}', [XuxemonController::class, 'update'])->name('xuxemon
 Route::delete('xuxemons/{id}', [XuxemonController::class, 'destroy'])->name('xuxemons.destroy');
 
 // Ruta para obtener un xuxemon aleatorio
-Route::get('xuxemon/aleatorio', [XuxemonController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
+Route::get('xuxemon/aleatorio', [XuxemonUsuarioController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
