@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\XuxemonController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChucheController;
 use App\Http\Controllers\XuxemonUsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,12 @@ Route::get('xuxemons/{id}', [XuxemonController::class, 'show'])->name('xuxemons.
 Route::post('xuxemons', [XuxemonController::class, 'store'])->name('xuxemons.store');
 Route::put('xuxemons/{id}', [XuxemonController::class, 'update'])->name('xuxemons.update');
 Route::delete('xuxemons/{id}', [XuxemonController::class, 'destroy'])->name('xuxemons.destroy');
+
+Route::get('chuches', [ChucheController::class, 'index'])->name('chuches.index');
+Route::get('chuches/{id}', [ChucheController::class, 'show'])->name('chuches.show');
+Route::post('chuches', [ChucheController::class, 'store'])->name('chuches.store');
+Route::put('chuches/{id}', [ChucheController::class, 'update'])->name('chuches.update');
+Route::delete('chuches/{id}', [ChucheController::class, 'destroy'])->name('chuches.destroy');
 
 // Ruta para obtener un xuxemon aleatorio
 Route::get('xuxemon/aleatorio', [XuxemonUsuarioController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
