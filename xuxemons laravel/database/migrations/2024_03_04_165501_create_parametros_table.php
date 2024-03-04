@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('parametros', function (Blueprint $table) {
             $table->id();
+            $table->string('tamanio');
+            $table->integer('caramelos_mediano');
+            $table->integer('caramelos_grande');
             $table->timestamps();
         });
     }

@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('mochilas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_usuario');
+            $table->integer('monedas');
             $table->timestamps();
+
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
