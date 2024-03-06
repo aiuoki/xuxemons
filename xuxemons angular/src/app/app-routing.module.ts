@@ -7,6 +7,7 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
 import { IndexComponent } from './components/xuxemons/index/index.component';
 import { CreateComponent } from './components/xuxemons/create/create.component';
 import { UpdateComponent } from './components/xuxemons/update/update.component';
+import { ParametrosComponent } from './components/parametros/parametros.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
     {
         path: 'xuxemons',
         component: XuxemonComponent
+    },
+    {
+        path: 'parametros',
+        component: ParametrosComponent
     },
     {
         path: '',
