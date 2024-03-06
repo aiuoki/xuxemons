@@ -24,7 +24,7 @@ import { ParametrosComponent } from './components/parametros/parametros.componen
     CreateComponent,
     IndexComponent,
     UpdateComponent,
-    ParametrosComponent,
+    ParametrosComponent
   ],
   imports: [
     BrowserModule,
