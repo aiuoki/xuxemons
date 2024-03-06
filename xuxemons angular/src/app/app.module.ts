@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './components/xuxemons/create/create.component';
 import { IndexComponent } from './components/xuxemons/index/index.component';
 import { UpdateComponent } from './components/xuxemons/update/update.component';
+import { ParametrosComponent } from './components/parametros/parametros.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UpdateComponent } from './components/xuxemons/update/update.component';
     ErrorComponentComponent,
     CreateComponent,
     IndexComponent,
-    UpdateComponent
+    UpdateComponent,
+    ParametrosComponent
   ],
   imports: [
     BrowserModule,
