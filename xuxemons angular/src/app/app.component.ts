@@ -9,9 +9,6 @@ import { XuxemonService } from './services/xuxemon.service';
 export class AppComponent {
   constructor(private xuxemonService: XuxemonService) { }
 
-auth = false;
-
-
   xuxemonAleatorio() {
     this.xuxemonService.xuxemonAleatorio().subscribe();
   }
