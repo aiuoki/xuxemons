@@ -36,11 +36,12 @@ Route::get('users/email/{email}', [UserController::class, 'comprobarEmail'])->na
 
 Route::get('xuxemons', [XuxemonController::class, 'index'])->name('xuxemons.index');
 Route::get('xuxemons/{id}', [XuxemonController::class, 'show'])->name('xuxemons.show');
-Route::get('xuxemons/nombre/{nombre}', [XuxemonController::class, 'comprobarNombre'])->name('xuxemons.comprobarNombre');
-Route::get('xuxemons/archivo/{archivo}', [XuxemonController::class, 'comprobarArchivo'])->name('xuxemons.comprobarArchivo');
 Route::post('xuxemons', [XuxemonController::class, 'store'])->name('xuxemons.store');
 Route::put('xuxemons/{id}', [XuxemonController::class, 'update'])->name('xuxemons.update');
 Route::delete('xuxemons/{id}', [XuxemonController::class, 'destroy'])->name('xuxemons.destroy');
+
+Route::get('xuxemons/nombre/{nombre}', [XuxemonController::class, 'comprobarNombre'])->name('xuxemons.comprobarNombre');
+Route::get('xuxemons/archivo/{archivo}', [XuxemonController::class, 'comprobarArchivo'])->name('xuxemons.comprobarArchivo');
 
 // Ruta para obtener un xuxemon aleatorio
 Route::get('xuxemon/aleatorio', [XuxemonController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');

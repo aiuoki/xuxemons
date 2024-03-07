@@ -8,6 +8,22 @@ import { Observable, catchError, of, tap } from 'rxjs';
 export class XuxemonService {
   constructor(private http: HttpClient) { }
 
+  comprobarNombre(nombre: string): Observable<any> {
+    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/nombre/${nombre}`).pipe(
+      catchError((err) => {
+        return of(err.error);
+      })
+    );
+  }
+
+  comprobarArchivo(archivo: string): Observable<any> {
+    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/archivo/${archivo}`).pipe(
+      catchError((err) => {
+        return of(err.error);
+      })
+    );
+  }
+
   index(): Observable<any> {
     return this.http.get("http://127.0.0.1:8000/api/xuxemons").pipe(
       tap(() => {

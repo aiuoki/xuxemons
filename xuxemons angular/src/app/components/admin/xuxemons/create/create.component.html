@@ -1,19 +1,32 @@
-<div class="contenedor">
-    <div class="formulario">
+<div class="contenido">
+    <div class="formBox">
         <h1>Crear Xuxemon</h1>
 
-        <form [formGroup]="form" (ngSubmit)="crearXuxemon()">
-            <div class="input">
-                <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
+        <form [formGroup]="form" (ngSubmit)="crearXuxemon()" class="form">
+            <div class="inputBox">
+                <input type="text" formControlName="nombre" [ngClass]="{'input-focus': form.get('nombre')?.value}">
+                <span [ngClass]="{'span-focus': form.get('nombre')?.value}">Nombre</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">{{ this.errorNombre }}</div>
+                </div>
             </div>
-            <select name="tipo" formControlName="tipo">
-                <option value="">Selecciona un Tipo</option>
-                <option value="agua">Agua</option>
-                <option value="aire">Aire</option>
-                <option value="tierra">Tierra</option>
-            </select>
-            <div class="input">
-                <input type="text" name="archivo" formControlName="archivo" placeholder="Archivo">
+
+            <div class="inputBox">
+                <select formControlName="tipo" [ngClass]="{'input-focus': form.get('tipo')?.value}">
+                    <option value="agua">Agua</option>
+                    <option value="aire">Aire</option>
+                    <option value="tierra">Tierra</option>
+                </select>
+                <span [ngClass]="{'span-focus': form.get('tipo')?.value}">Tipo</span>
+                <div class="errorBox"></div>
+            </div>
+            
+            <div class="inputBox">
+                <input type="text" formControlName="archivo" [ngClass]="{'input-focus': form.get('archivo')?.value}">
+                <span [ngClass]="{'span-focus': form.get('archivo')?.value}">Archivo</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('archivo')?.touched && form.get('archivo')?.invalid">{{ this.errorArchivo }}</div>
+                </div>
             </div>
 
             <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Crear Xuxemon">
