@@ -12,6 +12,7 @@ import { UpdateComponent } from './components/admin/xuxemons/update/update.compo
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ParametrosComponent } from './components/admin/parametros/parametros.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ErrorComponent } from './components/error/error.component';
     UpdateComponent,
     LoginComponent,
     RegisterComponent,
-    ErrorComponent
+    ErrorComponent,
+    ParametrosComponent
   ],
   imports: [
     BrowserModule,
