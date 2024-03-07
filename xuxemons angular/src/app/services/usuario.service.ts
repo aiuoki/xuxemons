@@ -11,15 +11,15 @@ export class UsuarioService {
   comprobarNick(nick: string): Observable<any> {
     return this.http.get(`http://127.0.0.1:8000/api/users/nick/${nick}`).pipe(
       catchError((err) => {
-        return of(err);
+        return of(err.error);
       })
     );
   }
-
+  
   comprobarEmail(email: string): Observable<any> {
     return this.http.get(`http://127.0.0.1:8000/api/users/email/${email}`).pipe(
       catchError((err) => {
-        return of(err);
+        return of(err.error);
       })
     );
   }

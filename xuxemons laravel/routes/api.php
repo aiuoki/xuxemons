@@ -27,11 +27,12 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
-Route::get('users/nick/{nick}', [UserController::class, 'comprobarNick'])->name('users.comprobarNick');
-Route::get('users/email/{email}', [UserController::class, 'comprobarEmail'])->name('users.comprobarEmail');
 Route::post('users', [UserController::class, 'store'])->name('users.store');
 Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('users/nick/{nick}', [UserController::class, 'comprobarNick'])->name('users.comprobarNick');
+Route::get('users/email/{email}', [UserController::class, 'comprobarEmail'])->name('users.comprobarEmail');
 
 Route::get('xuxemons', [XuxemonController::class, 'index'])->name('xuxemons.index');
 Route::get('xuxemons/{id}', [XuxemonController::class, 'show'])->name('xuxemons.show');

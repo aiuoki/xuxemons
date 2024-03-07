@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../services/usuario.service';
+import { forkJoin } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register-component',
@@ -8,9 +10,6 @@ import { UsuarioService } from '../services/usuario.service';
   styleUrls: ['./register-component.component.css']
 })
 export class RegisterComponentComponent {
-  nickDisponible: boolean = true;
-  emailDisponible: boolean = true;
-
   constructor(public usuarioService: UsuarioService) {
     this.formRegister.valueChanges.subscribe(() => {
       this.checkForm();
@@ -55,42 +54,30 @@ export class RegisterComponentComponent {
     }
   
     const nickControl = this.formRegister.get('nick');
-    if (nickControl?.hasError('required')) {
-      this.errorNick = 'El nick no puede estar vacío';
-    } else if (nickControl?.hasError('pattern')) {
-      this.errorNick = 'El nick solo puede contener letras y números';
-    } else if (!this.nickDisponible) {
-      this.errorNick = 'El nick no está disponible';
+    if (nickControl) {
+      if (nickControl.hasError('required')) {
+        this.errorNick = 'El nick no puede estar vacío';
+      } else if (nickControl.hasError('pattern')) {
+        this.errorNick = 'El nick solo puede contener letras y números';
+      } else {
+        this.errorNick = '';
+      }
     }
   
     const emailControl = this.formRegister.get('email');
-    if (emailControl?.hasError('required')) {
-      this.errorEmail = 'El email no puede estar vacío';
-    } else if (emailControl?.hasError('email')) {
-      this.errorEmail = 'El email debe ser válido';
-    } else if (!this.emailDisponible) {
-      this.errorEmail = 'El email no está disponible';
+    if (emailControl) {
+      if (emailControl.hasError('required')) {
+        this.errorEmail = 'El email no puede estar vacío';
+      } else if (emailControl.hasError('email')) {
+        this.errorEmail = 'El email debe ser válido';
+      } else {
+        this.errorEmail = '';
+      }
     }
   
     if (this.formRegister.hasError('notSame')) {
       this.errorPassword2 = 'Las contraseñas deben coincidir';
     }
-  }
-
-  comprobarNick() {
-    const nick = this.formRegister.value.nick;
-    this.usuarioService.comprobarNick(nick).subscribe({
-      next: value => { this.nickDisponible = value; },
-      error: err => { this.nickDisponible = false; }
-    });
-  }
-
-  comprobarEmail() {
-    const email = this.formRegister.value.email;
-    this.usuarioService.comprobarEmail(email).subscribe({
-      next: value => { this.emailDisponible = value; },
-      error: err => { this.emailDisponible = false; }
-    });
   }
   
   registrarUsuario() {
@@ -99,22 +86,38 @@ export class RegisterComponentComponent {
     const nick = this.formRegister.value.nick;
     const email = this.formRegister.value.email;
     const password = this.formRegister.value.password;
-
-    // Comprobamos el nick y el email con las funciones de arriba
-    this.comprobarNick();
-    this.comprobarEmail();
-
-    if(!this.nickDisponible) {
-      console.log("El nick no está disponible");
-
-    }
-
-    if(!this.emailDisponible) {
-      console.log("El email no está disponible");
-    }
-
-    this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
-      next: value => console.log(value),
+  
+    forkJoin({
+      nickExists: this.usuarioService.comprobarNick(nick),
+      emailExists: this.usuarioService.comprobarEmail(email)
+    }).pipe(
+      tap(({ nickExists, emailExists }) => {
+        if (nickExists.exists) {
+          this.errorNick = 'El nick ya está en uso';
+          const nickControl = this.formRegister.get('nick');
+          if (nickControl) {
+            nickControl.setErrors({ 'exists': true });
+            nickControl.markAsTouched(); // Forzar la actualización de la vista
+          }
+        }
+        if (emailExists.exists) {
+          this.errorEmail = 'El email ya está en uso';
+          const emailControl = this.formRegister.get('email');
+          if (emailControl) {
+            emailControl.setErrors({ 'exists': true });
+            emailControl.markAsTouched(); // Forzar la actualización de la vista
+          }
+        }
+      })
+    ).subscribe({
+      next: ({ nickExists, emailExists }) => {
+        if (!nickExists.exists && !emailExists.exists) {
+          this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
+            next: value => console.log(value),
+            error: err => console.log(err)
+          });
+        }
+      },
       error: err => console.log(err)
     });
   }

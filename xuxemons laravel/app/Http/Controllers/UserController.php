@@ -22,24 +22,6 @@ class UserController extends Controller
         }
     }
 
-    public function comprobarNick($nick) {
-        $user = User::where('nick', $nick)->first();
-        if ($user) {
-            return response()->json(['error' => 'Nick ya registrado'], 409);
-        } else {
-            return response()->json(['message' => 'Nick disponible'], 200);
-        }
-    }
-
-    public function comprobarEmail($email) {
-        $user = User::where('email', $email)->first();
-        if ($user) {
-            return response()->json(['error' => 'Email ya registrado'], 409);
-        } else {
-            return response()->json(['message' => 'Email disponible'], 200);
-        }
-    }
-
     public function store(Request $request) {
         try {
             $data = $request->validate([
@@ -82,5 +64,25 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return response()->json(['message' => 'Usuario eliminado correctamente'], 200);
+    }
+
+    public function comprobarNick($nick) {
+        $user = User::where('nick', $nick)->first();
+    
+        if ($user) {
+            return response()->json(['exists' => true], 200);
+        } else {
+            return response()->json(['exists' => false], 200);
+        }
+    }
+    
+    public function comprobarEmail($email) {
+        $user = User::where('email', $email)->first();
+    
+        if ($user) {
+            return response()->json(['exists' => true], 200);
+        } else {
+            return response()->json(['exists' => false], 200);
+        }
     }
 }
