@@ -8,7 +8,7 @@
                 <input type="text" formControlName="nombre" [ngClass]="{'input-focus': formRegister.get('nombre')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('nombre')?.value}">Nombre</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('nombre')?.touched && formRegister.get('nombre')?.invalid">{{this.errorNombre}}</div>
+                    <div class="error" *ngIf="formRegister.get('nombre')?.touched && formRegister.get('nombre')?.invalid">{{ this.errorNombre }}</div>
                 </div>
             </div>
 
@@ -16,7 +16,7 @@
                 <input type="text" formControlName="apellidos" [ngClass]="{'input-focus': formRegister.get('apellidos')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('apellidos')?.value}">Apellidos</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('apellidos')?.touched && formRegister.get('apellidos')?.invalid">{{this.errorApellidos}}</div>
+                    <div class="error" *ngIf="formRegister.get('apellidos')?.touched && formRegister.get('apellidos')?.invalid">{{ this.errorApellidos }}</div>
                 </div>
             </div>
 
@@ -24,7 +24,7 @@
                 <input type="text" formControlName="nick" [ngClass]="{'input-focus': formRegister.get('nick')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('nick')?.value}">Nick</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('nick')?.touched && (formRegister.get('nick')?.invalid || errorNick)">{{this.errorNick}}</div>
+                    <div class="error" *ngIf="formRegister.get('nick')?.touched && (formRegister.get('nick')?.invalid || errorNick)">{{ this.errorNick }}</div>
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
                 <input type="text" formControlName="email" [ngClass]="{'input-focus': formRegister.get('email')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('email')?.value}">Email</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('email')?.touched && (formRegister.get('email')?.invalid || errorEmail)">{{this.errorEmail}}</div>
+                    <div class="error" *ngIf="formRegister.get('email')?.touched && (formRegister.get('email')?.invalid || errorEmail)">{{ this.errorEmail }}</div>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                 <input type="password" formControlName="password2" [ngClass]="{'input-focus': formRegister.get('password2')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('password2')?.value}">Confirmar contraseña</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('password')?.touched && formRegister.hasError('notSame')">{{this.errorPassword2}}</div>
+                    <div class="error" *ngIf="formRegister.get('password')?.touched && formRegister.hasError('notSame')">{{ this.errorPassword2 }}</div>
                 </div>
             </div>
 

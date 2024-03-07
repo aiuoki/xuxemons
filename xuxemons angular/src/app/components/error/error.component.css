@@ -2,10 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 93vh;
+    height: 92vh;
 }
 
 .contenido p {
-    font-size: 5em;
+    font-size: 3em;
     color: rgb(222, 55, 55);
 }
