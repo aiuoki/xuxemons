@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('parametros', function (Blueprint $table) {
             $table->id();
-            $table->string('tamanio_xuxemon');
-            $table->integer('caramelos_mediano');
-            $table->integer('caramelos_grande');
+            $table->string('tamanio_xuxemon')->default('pequenio');
+            $table->integer('caramelos_mediano')->default(3);
+            $table->integer('caramelos_grande')->default(5);
             $table->timestamps();
         });
     }
