@@ -24,9 +24,11 @@ export class IndexComponent {
   }
 
   eliminarXuxemon(id: number) {
-    this.xuxemonService.destroy(id).subscribe(
-      () => this.xuxemons = this.xuxemons.filter(xuxemon => xuxemon.id !== id),
-      error => console.error(error)
-    );
+    if (window.confirm('Eliminar Xuxemon?')) {
+      this.xuxemonService.destroy(id).subscribe(
+        () => this.xuxemons = this.xuxemons.filter(xuxemon => xuxemon.id !== id),
+        error => console.error(error)
+      );
+    }
   }
 }
