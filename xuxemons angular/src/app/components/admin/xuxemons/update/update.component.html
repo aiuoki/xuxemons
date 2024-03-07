@@ -1,1 +1,24 @@
-<p>update works!</p>
+<div class="contenedor">
+    <div class="formulario">
+        <h1>Editar Xuxemon</h1>
+
+        <form [formGroup]="form" (ngSubmit)="editarXuxemon()">
+            <div class="input">
+                <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
+            </div>
+            <select name="tipo" formControlName="tipo">
+                <option value="agua">Agua</option>
+                <option value="aire">Aire</option>
+                <option value="tierra">Tierra</option>
+            </select>
+            <div class="input">
+                <input type="text" name="archivo" formControlName="archivo" placeholder="Archivo">
+            </div>
+
+            <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Editar Xuxemon">
+        </form>
+        <a routerLink="/mostrar-xuxemons">Volver</a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
