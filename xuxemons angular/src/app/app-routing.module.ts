@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { XuxemonComponent } from './xuxemon/xuxemon.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
-import { ErrorComponentComponent } from './error-component/error-component.component';
 import { IndexComponent } from './components/xuxemons/index/index.component';
 import { CreateComponent } from './components/xuxemons/create/create.component';
 import { UpdateComponent } from './components/xuxemons/update/update.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
     {
@@ -31,7 +31,7 @@ const routes: Routes = [
     },
     {
         path: 'error',
-        component: ErrorComponentComponent
+        component: ErrorComponent
     },
     {
         path: 'xuxemons',

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { XuxemonComponent } from './xuxemon/xuxemon.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
-import { ErrorComponentComponent } from './error-component/error-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './components/xuxemons/create/create.component';
@@ -22,7 +21,6 @@ import { ErrorComponent } from './components/error/error.component';
     XuxemonComponent,
     LoginComponentComponent,
     RegisterComponentComponent,
-    ErrorComponentComponent,
     CreateComponent,
     IndexComponent,
     UpdateComponent,
