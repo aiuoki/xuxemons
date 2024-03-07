@@ -62,25 +62,6 @@ class XuxemonController extends Controller
         return response()->json(['message' => 'Xuxémon eliminado correctamente'], 200);
     }
 
-    public function xuxemonAleatorio() {
-        // Reccoremos la lista de usuarios con rol de usuario
-        foreach (User::all() as $usuario) {
-            if ($usuario->rol == 'usuario') {
-                // Seleccionamos un id aleatorio de la lista de xuxemons
-                $xuxemon = Xuxemon::inRandomOrder()->first();
-
-                // Asignamos el xuxemon aleatorio al usuario
-                XuxemonUsuario::create([
-                    'id_usuario' => $usuario->id,
-                    'id_xuxemon' => $xuxemon->id
-                ]);
-
-                // Devolvemos un mensaje de éxito
-                return response()->json(['message' => 'Xuxemon asignado correctamente'], 200);
-            }
-        }
-    }
-
     public function comprobarNombre($nombre) {
         $xuxemon = Xuxemon::where('nombre', $nombre)->first();
     
@@ -98,6 +79,25 @@ class XuxemonController extends Controller
             return response()->json(['exists' => true], 200);
         } else {
             return response()->json(['exists' => false], 200);
+        }
+    }
+
+    public function xuxemonAleatorio() {
+        // Reccoremos la lista de usuarios con rol de usuario
+        foreach (User::all() as $usuario) {
+            if ($usuario->rol == 'usuario') {
+                // Seleccionamos un id aleatorio de la lista de xuxemons
+                $xuxemon = Xuxemon::inRandomOrder()->first();
+
+                // Asignamos el xuxemon aleatorio al usuario
+                XuxemonUsuario::create([
+                    'id_usuario' => $usuario->id,
+                    'id_xuxemon' => $xuxemon->id
+                ]);
+
+                // Devolvemos un mensaje de éxito
+                return response()->json(['message' => 'Xuxemon asignado correctamente'], 200);
+            }
         }
     }
 }

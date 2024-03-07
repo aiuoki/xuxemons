@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class XuxemonUsuario extends Model
+class MochilaChuche extends Model
 {
     use HasFactory;
 
-    protected $table = 'xuxemons_usuarios';
+    protected $table = 'mochilas_chuches';
 
     protected $fillable = [
-        'id_usuario',
-        'id_xuxemon',
+        'id_mochila',
+        'id_chuche',
+        'cantidad',
     ];
 }
