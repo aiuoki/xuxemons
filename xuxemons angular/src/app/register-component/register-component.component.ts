@@ -3,6 +3,8 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { UsuarioService } from '../services/usuario.service';
 import { forkJoin } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register-component',
@@ -10,7 +12,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./register-component.component.css']
 })
 export class RegisterComponentComponent {
-  constructor(public usuarioService: UsuarioService) {
+  constructor(public usuarioService: UsuarioService, private router: Router) {
     this.formRegister.valueChanges.subscribe(() => {
       this.checkForm();
     });
@@ -113,7 +115,10 @@ export class RegisterComponentComponent {
       next: ({ nickExists, emailExists }) => {
         if (!nickExists.exists && !emailExists.exists) {
           this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
-            next: value => console.log(value),
+            next: value => {
+              console.log(value);
+              this.router.navigate(['/xuxemons']); // Redirige al usuario
+            },
             error: err => console.log(err)
           });
         }

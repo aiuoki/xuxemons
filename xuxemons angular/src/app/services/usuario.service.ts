@@ -32,16 +32,8 @@ export class UsuarioService {
       email: email,
       password: password
     }).pipe(
-      tap(() => {
-        alert("Usuario registrado");
-      }),
       catchError((err) => {
-        if (err.error && err.error.error === "Missing password") {
-          alert("Falta la contraseña");
-        } else {
-          alert("Error en el registro");
-        }
-        return of (err);
+        return of(err);
       })
     );
   }
