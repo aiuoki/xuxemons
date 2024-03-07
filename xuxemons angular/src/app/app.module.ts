@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { XuxemonComponent } from './xuxemon/xuxemon.component';
+import { XuxemonComponent } from './components/xuxemon/xuxemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './components/xuxemons/create/create.component';
