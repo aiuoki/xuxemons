@@ -10,6 +10,8 @@ export class AppComponent {
   constructor(private xuxemonService: XuxemonService) { }
 
   xuxemonAleatorio() {
-    this.xuxemonService.xuxemonAleatorio().subscribe();
+    this.xuxemonService.xuxemonAleatorio().subscribe(() => {
+      alert('Xuxemon aleatorio asignado a cada usuario');
+    });
   }
 }

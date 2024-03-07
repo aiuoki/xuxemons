@@ -9,35 +9,19 @@ export class XuxemonService {
   constructor(private http: HttpClient) { }
 
   comprobarNombre(nombre: string): Observable<any> {
-    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/nombre/${nombre}`).pipe(
-      catchError((err) => {
-        return of(err.error);
-      })
-    );
+    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/nombre/${nombre}`);
   }
 
   comprobarArchivo(archivo: string): Observable<any> {
-    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/archivo/${archivo}`).pipe(
-      catchError((err) => {
-        return of(err.error);
-      })
-    );
+    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/archivo/${archivo}`);
   }
 
   index(): Observable<any> {
-    return this.http.get("http://127.0.0.1:8000/api/xuxemons").pipe(
-      catchError((err) => {
-        return of(err);
-      })
-    );
+    return this.http.get("http://127.0.0.1:8000/api/xuxemons");
   }
 
   show(id: number): Observable<any> {
-    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/${id}`).pipe(
-      catchError((err) => {
-        return of(err);
-      })
-    );
+    return this.http.get(`http://127.0.0.1:8000/api/xuxemons/${id}`);
   }
 
   store(nombre:string, tipo:string, archivo:string): Observable<any> {
@@ -45,11 +29,7 @@ export class XuxemonService {
       nombre: nombre,
       tipo: tipo,
       archivo: archivo
-    }).pipe(
-      catchError((err) => {
-        return of (err);
-      })
-    );
+    });
   }
 
   update(id: number, nombre: string, tipo: string, archivo: string): Observable<any> {
@@ -57,30 +37,14 @@ export class XuxemonService {
       nombre: nombre,
       tipo: tipo,
       archivo: archivo
-    }).pipe(
-      catchError((err) => {
-        return of(err);
-      })
-    );
+    });
   }
 
   destroy(id: number): Observable<any> {
-    return this.http.delete(`http://127.0.0.1:8000/api/xuxemons/${id}`).pipe(
-      catchError((err) => {
-        return of(err);
-      })
-    );
+    return this.http.delete(`http://127.0.0.1:8000/api/xuxemons/${id}`);
   }
   
   xuxemonAleatorio(): Observable<any> {
-    return this.http.get("http://127.0.0.1:8000/api/xuxemon/aleatorio").pipe(
-      tap(() => {
-        alert("Xuxemon aleatorio asignado a cada usuario");
-      }),
-      catchError((err) => {
-        alert("Error al asignar xuxemon aleatorio a cada usuario");
-        return of(err);
-      })
-    );
+    return this.http.get("http://127.0.0.1:8000/api/xuxemon/aleatorio");
   }
 }
