@@ -20,12 +20,12 @@ class AuthController extends Controller
     
             if($user && password_verify($credentials['password'], $user->password)) {
                 Auth::login($user);
-                return response()->json(['message' => 'Usuario logueado correctamente'], 200);
+                return response()->json(true, 200);
             } else {
-                return response()->json(['error' => 'Usuario o contraseña incorrectos'], 401);
+                return response()->json(false, 200);
             }
         } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
+            return response()->json(false, 200);
         }
     }
 

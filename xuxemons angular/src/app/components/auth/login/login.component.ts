@@ -22,6 +22,7 @@ export class LoginComponent {
   });
 
   errorEmail: string = '';
+  errorUsuario: string = '';
 
   checkForm() {
     const emailControl = this.formLogin.get('email');
@@ -41,8 +42,17 @@ export class LoginComponent {
     const password = this.formLogin.value.password;
 
     this.usuarioService.loginUsuario(email, password).subscribe({
-      next: value => console.log(value),
-      error: err => alert(err)
+      next: value => {
+        if (value) {
+          alert('Login correcto');
+          this.router.navigate(['/xuxemons']);
+        } else {
+          this.errorUsuario = 'Usuario o contraseña incorrectos';
+        }
+      },
+      error: err => {
+        console.error(err);
+      }
     });
   }
 }

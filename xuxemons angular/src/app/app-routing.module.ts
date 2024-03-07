@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { XuxemonComponent } from './components/xuxemon/xuxemon.component';
+import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
 import { IndexComponent } from './components/admin/xuxemons/index/index.component';
 import { CreateComponent } from './components/admin/xuxemons/create/create.component';
 import { UpdateComponent } from './components/admin/xuxemons/update/update.component';

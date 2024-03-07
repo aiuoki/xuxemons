@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import xuxemons from '../../../assets/json/xuxemons.json';
-import { Xuxemon } from '../../models/xuxemon.model';
+import xuxemons from '../../../../assets/json/xuxemons.json';
+import { Xuxemon } from '../../../models/xuxemon.model';
 
 @Component({
   selector: 'app-xuxemon',

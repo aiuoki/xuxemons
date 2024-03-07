@@ -8,14 +8,16 @@
                 <input type="text" formControlName="email" [ngClass]="{'input-focus': formLogin.get('email')?.value}">
                 <span [ngClass]="{'span-focus': formLogin.get('email')?.value}">Email</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formLogin.get('email')?.touched && (formLogin.get('email')?.invalid || errorEmail)">{{this.errorEmail}}</div>
+                    <div class="error" *ngIf="formLogin.get('email')?.touched && (formLogin.get('email')?.invalid || errorEmail)">{{ this.errorEmail }}</div>
                 </div>
             </div>
 
             <div class="inputBox">
                 <input type="password" formControlName="password" [ngClass]="{'input-focus': formLogin.get('password')?.value}">
                 <span [ngClass]="{'span-focus': formLogin.get('password')?.value}">Contraseña</span>
-                <div class="errorBox"></div>
+                <div class="errorBox">
+                    <div class="error">{{ this.errorUsuario }}</div>
+                </div>
             </div>
 
             <input type="submit" [ngClass]="formLogin.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formLogin.valid" value="Ingresar">

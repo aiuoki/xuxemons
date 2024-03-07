@@ -115,7 +115,7 @@ export class RegisterComponent {
         if (!nickExists.exists && !emailExists.exists) {
           this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
             next: value => {
-              console.log(value);
+              alert('Usuario registrado');
               this.router.navigate(['/xuxemons']); // Redirige al usuario
             },
             error: err => console.log(err)
