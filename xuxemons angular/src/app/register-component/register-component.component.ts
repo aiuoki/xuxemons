@@ -8,8 +8,8 @@ import { UsuarioService } from '../services/usuario.service';
   styleUrls: ['./register-component.component.css']
 })
 export class RegisterComponentComponent {
-  nickDisponible: boolean = false;
-  emailDisponible: boolean = false;
+  nickDisponible: boolean = true;
+  emailDisponible: boolean = true;
 
   constructor(public usuarioService: UsuarioService) {
     this.formRegister.valueChanges.subscribe(() => {
@@ -18,8 +18,8 @@ export class RegisterComponentComponent {
   }
 
   formRegister: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z\s]*$')]),
-    apellidos: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z\s]*$')]),
+    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+    apellidos: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
     nick: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl(''),
@@ -38,14 +38,6 @@ export class RegisterComponentComponent {
   errorNick: string = '';
   errorEmail: string = '';
   errorPassword2: string = '';
-
-  comprobarNick() {
-    const nick = this.formRegister.value.nick;
-    this.usuarioService.comprobarNick(nick).subscribe({
-      next: value => { this.nickDisponible = value; },
-      error: err => { this.nickDisponible = false; }
-    });
-  }
 
   checkForm() {
     const nombreControl = this.formRegister.get('nombre');
@@ -85,6 +77,14 @@ export class RegisterComponentComponent {
     }
   }
 
+  comprobarNick() {
+    const nick = this.formRegister.value.nick;
+    this.usuarioService.comprobarNick(nick).subscribe({
+      next: value => { this.nickDisponible = value; },
+      error: err => { this.nickDisponible = false; }
+    });
+  }
+
   comprobarEmail() {
     const email = this.formRegister.value.email;
     this.usuarioService.comprobarEmail(email).subscribe({
@@ -106,18 +106,16 @@ export class RegisterComponentComponent {
 
     if(!this.nickDisponible) {
       console.log("El nick no está disponible");
-      this.errorNick = 'El nick no está disponible';
 
     }
 
     if(!this.emailDisponible) {
       console.log("El email no está disponible");
-      this.errorEmail = 'El email no está disponible';
     }
 
-    // this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
-    //   next: value => console.log(value),
-    //   error: err => console.log(err)
-    // });
+    this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
+      next: value => console.log(value),
+      error: err => console.log(err)
+    });
   }
 }

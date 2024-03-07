@@ -24,7 +24,7 @@
                 <input type="text" formControlName="nick" [ngClass]="{'input-focus': formRegister.get('nick')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('nick')?.value}">Nick</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('nick')?.touched && formRegister.get('nick')?.invalid && !this.nickDisponible">{{this.errorNick}}</div>
+                    <div class="error" *ngIf="formRegister.get('nick')?.touched && formRegister.get('nick')?.invalid">{{this.errorNick}}</div>
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
                 <input type="text" formControlName="email" [ngClass]="{'input-focus': formRegister.get('email')?.value}">
                 <span [ngClass]="{'span-focus': formRegister.get('email')?.value}">Email</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.invalid && !this.emailDisponible">{{this.errorEmail}}</div>
+                    <div class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.invalid">{{this.errorEmail}}</div>
                 </div>
             </div>
 
