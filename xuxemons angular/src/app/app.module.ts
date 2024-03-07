@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { XuxemonComponent } from './xuxemon/xuxemon.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
-import { RegisterComponentComponent } from './register-component/register-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './components/xuxemons/create/create.component';
@@ -19,8 +17,6 @@ import { ErrorComponent } from './components/error/error.component';
   declarations: [
     AppComponent,
     XuxemonComponent,
-    LoginComponentComponent,
-    RegisterComponentComponent,
     CreateComponent,
     IndexComponent,
     UpdateComponent,
