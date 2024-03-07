@@ -3,7 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\XuxemonController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\XuxemonUsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +44,4 @@ Route::get('xuxemons/nombre/{nombre}', [XuxemonController::class, 'comprobarNomb
 Route::get('xuxemons/archivo/{archivo}', [XuxemonController::class, 'comprobarArchivo'])->name('xuxemons.comprobarArchivo');
 
 // Ruta para obtener un xuxemon aleatorio
-Route::get('xuxemon/aleatorio', [XuxemonController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
+Route::get('xuxemon/aleatorio', [XuxemonUsuarioController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
