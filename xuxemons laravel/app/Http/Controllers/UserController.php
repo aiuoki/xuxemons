@@ -22,6 +22,24 @@ class UserController extends Controller
         }
     }
 
+    public function comprobarNick($nick) {
+        $user = User::where('nick', $nick)->first();
+        if ($user) {
+            return response()->json(['error' => 'Nick ya registrado'], 409);
+        } else {
+            return response()->json(['message' => 'Nick disponible'], 200);
+        }
+    }
+
+    public function comprobarEmail($email) {
+        $user = User::where('email', $email)->first();
+        if ($user) {
+            return response()->json(['error' => 'Email ya registrado'], 409);
+        } else {
+            return response()->json(['message' => 'Email disponible'], 200);
+        }
+    }
+
     public function store(Request $request) {
         try {
             $data = $request->validate([
@@ -32,10 +50,6 @@ class UserController extends Controller
                 'password' => 'required',
                 'rol' => 'sometimes',
             ]);
-
-            if(!isset($data['rol'])) {
-                $data['rol'] = 'usuario';
-            }
 
             $user = User::create($data);
             return response()->json(['message' => 'Usuario creado correctamente'], 200);
@@ -64,8 +78,7 @@ class UserController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $user = User::findOrFail($id);
         $user->delete();
         return response()->json(['message' => 'Usuario eliminado correctamente'], 200);

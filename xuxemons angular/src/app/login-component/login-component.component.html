@@ -1,19 +1,28 @@
-<div class="contenedor">
-    <div class="formulario">
+<div class="contenido">
+    <div class="formBox">
         <img src="../../assets/livestock.png">
         <h1>Login</h1>
 
-        <form [formGroup]="formLogin" (ngSubmit)="loginUsuario()">
-            <div class="input">
-                <input type="text" name="email" formControlName="email" placeholder="Email">
+        <form [formGroup]="formLogin" (ngSubmit)="loginUsuario()" class="form">
+            <div class="inputBox">
+                <input type="text" formControlName="email" [ngClass]="{'input-focus': formLogin.get('email')?.value}">
+                <span [ngClass]="{'span-focus': formLogin.get('email')?.value}">Email</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf=""></div>
+                </div>
             </div>
-            <div class="input">
-                <input type="password" name="password" formControlName="password" placeholder="Contraseña">
+
+            <div class="inputBox">
+                <input type="password" formControlName="password" [ngClass]="{'input-focus': formLogin.get('password')?.value}">
+                <span [ngClass]="{'span-focus': formLogin.get('password')?.value}">Contraseña</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf=""></div>
+                </div>
             </div>
 
             <input type="submit" [ngClass]="formLogin.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formLogin.valid" value="Ingresar">
         </form>
-        <p>¿Ya tienes cuenta? <a href="register">Registrate</a></p>
+        <p>No tienes cuenta? <a href="register">Registrate</a></p>
     </div>
 </div>
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nick')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('rol');
+            $table->string('rol')->default('usuario');
             $table->timestamps();
         });
     }

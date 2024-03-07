@@ -24,6 +24,24 @@ class XuxemonController extends Controller
         }
     }
 
+    public function comprobarNombre($nombre) {
+        $xuxemon = Xuxemon::where('nombre', $nombre)->first();
+        if ($xuxemon) {
+            return response()->json(['error' => 'Nombre ya registrado'], 404);
+        } else {
+            return response()->json(['message' => 'Nombre disponible'], 200);
+        }
+    }
+
+    public function comprobarArchivo($archivo) {
+        $xuxemon = Xuxemon::where('archivo', $archivo)->first();
+        if ($xuxemon) {
+            return response()->json(['error' => 'Archivo ya registrado'], 404);
+        } else {
+            return response()->json(['message' => 'Archivo disponible'], 200);
+        }
+    }
+
     public function store(Request $request) {
         try {
             $data = $request->validate([

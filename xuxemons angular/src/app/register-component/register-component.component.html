@@ -1,35 +1,58 @@
-<div class="contenedor">
-    <div class="formulario">
-        <div>
-            <img src="../../assets/livestock.png">
-        </div>
+<div class="contenido">
+    <div class="formBox">
+        <img src="../../assets/livestock.png">
         <h1>Registro</h1>
-        
-        <form [formGroup]="formRegister" (ngSubmit)="registrarUsuario()">
-            <div class="input">
-                <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre">
+
+        <form [formGroup]="formRegister" (ngSubmit)="registrarUsuario()" class="form">
+            <div class="inputBox">
+                <input type="text" formControlName="nombre" [ngClass]="{'input-focus': formRegister.get('nombre')?.value}">
+                <span [ngClass]="{'span-focus': formRegister.get('nombre')?.value}">Nombre</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="formRegister.get('nombre')?.touched && formRegister.get('nombre')?.invalid">{{this.errorNombre}}</div>
+                </div>
             </div>
-            <div class="input">
-                <input type="text" name="apellidos" formControlName="apellidos" placeholder="Apellidos">
+
+            <div class="inputBox">
+                <input type="text" formControlName="apellidos" [ngClass]="{'input-focus': formRegister.get('apellidos')?.value}">
+                <span [ngClass]="{'span-focus': formRegister.get('apellidos')?.value}">Apellidos</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="formRegister.get('apellidos')?.touched && formRegister.get('apellidos')?.invalid">{{this.errorApellidos}}</div>
+                </div>
             </div>
-            <div class="input">
-                <input type="text" name="nick" formControlName="nick" placeholder="Nick">
+
+            <div class="inputBox">
+                <input type="text" formControlName="nick" [ngClass]="{'input-focus': formRegister.get('nick')?.value}">
+                <span [ngClass]="{'span-focus': formRegister.get('nick')?.value}">Nick</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="formRegister.get('nick')?.touched && formRegister.get('nick')?.invalid && !this.nickDisponible">{{this.errorNick}}</div>
+                </div>
             </div>
-            <div class="input">
-                <input type="text" name="email" formControlName="email" placeholder="Email">
+
+            <div class="inputBox">
+                <input type="text" formControlName="email" [ngClass]="{'input-focus': formRegister.get('email')?.value}">
+                <span [ngClass]="{'span-focus': formRegister.get('email')?.value}">Email</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.invalid && !this.emailDisponible">{{this.errorEmail}}</div>
+                </div>
             </div>
-            <div class="input">
-                <input type="password" name="password" formControlName="password" placeholder="Contraseña">
+
+            <div class="inputBox">
+                <input type="password" formControlName="password" [ngClass]="{'input-focus': formRegister.get('password')?.value}">
+                <span [ngClass]="{'span-focus': formRegister.get('password')?.value}">Contraseña</span>
+                <div class="errorBox"></div>
             </div>
-            <div class="input">
-                <input type="password" name="password2" formControlName="password2" placeholder="Confirmar contraseña">
+
+            <div class="inputBox">
+                <input type="password" formControlName="password2" [ngClass]="{'input-focus': formRegister.get('password2')?.value}">
+                <span [ngClass]="{'span-focus': formRegister.get('password2')?.value}">Confirmar contraseña</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="formRegister.get('password')?.touched && formRegister.hasError('notSame')">{{this.errorPassword2}}</div>
+                </div>
             </div>
 
             <input type="submit" [ngClass]="formRegister.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!formRegister.valid" value="Registrarse">
         </form>
-        <div>
-            <p>¿Ya tienes cuenta? <a href="login">Ingresar</a></p>
-        </div>
+        <p>Ya tienes cuenta? <a href="login">Ingresar</a></p>
     </div>
 </div>
 
