@@ -1,1 +1,35 @@
-<p>parametros works!</p>
+<div class="contenido">
+    <div class="formBox">
+        <h1>Parametros</h1>
+
+        <form [formGroup]="form" (ngSubmit)="editarParametros()" class="form">
+            <div class="inputBox">
+                <select formControlName="tamanio" [ngClass]="{'input-focus': form.get('tamanio')?.value}">
+                    <option value="pequenio">Pequeño</option>
+                    <option value="mediano">Mediano</option>
+                    <option value="grande">Grande</option>
+                </select>
+                <span [ngClass]="{'span-focus': form.get('tamanio')?.value}">Tamaño</span>
+                <div class="errorBox"></div>
+            </div>
+
+            <div class="inputBox">
+                <input type="number" formControlName="caramelosMediano" [ngClass]="{'input-focus': form.get('caramelosMediano')?.value}">
+                <span [ngClass]="{'span-focus': form.get('caramelosMediano')?.value}">Caramelos Mediano</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('caramelosMediano')?.touched && form.get('caramelosMediano')?.invalid">{{ this.errorCaramelosMediano }}</div>
+                </div>
+            </div>
+            
+            <div class="inputBox">
+                <input type="number" formControlName="caramelosGrande" [ngClass]="{'input-focus': form.get('caramelosGrande')?.value}">
+                <span [ngClass]="{'span-focus': form.get('caramelosGrande')?.value}">Caramelos Grande</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('caramelosGrande')?.touched && form.get('caramelosGrande')?.invalid">{{ this.errorCaramelosGrande }}</div>
+                </div>
+            </div>
+
+            <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Actualizar Parametros">
+        </form>
+    </div>
+</div>
