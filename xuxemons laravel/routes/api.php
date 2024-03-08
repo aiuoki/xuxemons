@@ -44,8 +44,7 @@ Route::delete('xuxemons/{id}', [XuxemonController::class, 'destroy'])->name('xux
 Route::get('xuxemons/nombre/{nombre}', [XuxemonController::class, 'comprobarNombre'])->name('xuxemons.comprobarNombre');
 Route::get('xuxemons/archivo/{archivo}', [XuxemonController::class, 'comprobarArchivo'])->name('xuxemons.comprobarArchivo');
 
-// Ruta para obtener un xuxemon aleatorio
-Route::get('xuxemon/aleatorio', [XuxemonUsuarioController::class, 'xuxemonAleatorio'])->name('xuxemons.aleatorio');
+Route::get('xuxemon/aleatorio', [XuxemonUsuarioController::class, 'xuxemonAleatorio'])->name('xuxemon.aleatorio');
 
 Route::get('parametros/{id}', [ParametroController::class, 'show'])->name('parametros.show');
 Route::put('parametros/{id}', [ParametroController::class, 'update'])->name('parametros.update');
