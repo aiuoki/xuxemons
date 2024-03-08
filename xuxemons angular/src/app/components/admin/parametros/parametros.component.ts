@@ -62,6 +62,12 @@ export class ParametrosComponent {
     const caramelosMediano = this.form.value.caramelosMediano;
     const caramelosGrande = this.form.value.caramelosGrande;
 
-    //
+    this.parametrosService.update(id, tamanio, caramelosMediano, caramelosGrande).subscribe({
+      next: value => {
+        console.log(value);
+        alert('Parámetros actualizados');
+      },
+      error: err => console.log(err)
+    });
   }
 }
