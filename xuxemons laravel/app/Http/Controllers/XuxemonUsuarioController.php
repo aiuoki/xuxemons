@@ -26,10 +26,9 @@ class XuxemonUsuarioController extends Controller
                     'id_xuxemon' => $xuxemon->id,
                     'tamanio' => $tamanio,
                 ]);
-
-                // Devolvemos un mensaje de éxito
-                return response()->json(['message' => 'Xuxemon asignado correctamente'], 200);
             }
         }
+        // Devolvemos un mensaje de éxito
+        return response()->json(['message' => 'Xuxemon asignado correctamente'], 200);
     }
 }
