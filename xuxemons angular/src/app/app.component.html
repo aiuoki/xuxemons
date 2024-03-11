@@ -1,20 +1,12 @@
 <nav>
     <a href="">Xuxemons</a>
     <div class="botones">
-        <ng-container>
-            <button routerLink="login">Login</button>
-            <button routerLink="register">Registro</button>
-        </ng-container>
-
-        <ng-container>
-            <button routerLink="parametros">Parametros</button>
-            <button routerLink="mostrar-xuxemons">Xuxemons</button>
-            <button (click)="xuxemonAleatorio()">Xuxemon Aleatorio</button>
-        </ng-container>
-        
-        <ng-container>
-            <button routerLink="xuxemons">Lista de xuxemons</button>
-        </ng-container>
+        <button (click)="xuxemonAleatorio()">Xuxemon Aleatorio</button>
+        <button routerLink="mostrar-xuxemons">Xuxemons</button>
+        <button routerLink="login">Login</button>
+        <button routerLink="register">Registro</button>
+        <button routerLink="xuxemons">Lista de xuxemons</button>
+        <button routerLink="parametros">Parametros</button>
     </div>
 </nav>
 
