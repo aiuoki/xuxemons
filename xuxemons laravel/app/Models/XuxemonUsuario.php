@@ -14,5 +14,6 @@ class XuxemonUsuario extends Model
     protected $fillable = [
         'id_usuario',
         'id_xuxemon',
+        'tamanio',
     ];
 }

@@ -34,6 +34,14 @@ class UserController extends Controller
             ]);
 
             $user = User::create($data);
+
+            // seleccionamos el usuario recien creado
+            $usuario = User::where('nick', $data['nick'])->first();
+
+            // y le creamos una mochila
+            $mochila = new MochilaController();
+            $mochila->create($usuario);
+
             return response()->json(['message' => 'Usuario creado correctamente'], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Usuario no insertado'], 404);
