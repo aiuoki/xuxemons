@@ -59,24 +59,4 @@ class XuxemonController extends Controller
         $xuxemon->delete();
         return response()->json(['message' => 'Xuxémon eliminado correctamente'], 200);
     }
-
-    public function comprobarNombre($nombre) {
-        $xuxemon = Xuxemon::where('nombre', $nombre)->first();
-    
-        if ($xuxemon) {
-            return response()->json(['exists' => true], 200);
-        } else {
-            return response()->json(['exists' => false], 200);
-        }
-    }
-    
-    public function comprobarArchivo($archivo) {
-        $xuxemon = Xuxemon::where('archivo', $archivo)->first();
-    
-        if ($xuxemon) {
-            return response()->json(['exists' => true], 200);
-        } else {
-            return response()->json(['exists' => false], 200);
-        }
-    }
 }
