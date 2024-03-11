@@ -17,14 +17,14 @@ class XuxemonUsuarioController extends Controller
                 // Seleccionamos un id aleatorio de la lista de xuxemons
                 $xuxemon = Xuxemon::inRandomOrder()->first();
 
-                // Obtenemos el parametro tamaño
-                $tamanio = Parametro::findOrFail(1)->tamanio_xuxemon;
+                // Obtén el valor de tamanio_xuxemon de la tabla parametros
+                $tamanio_xuxemon = Parametro::first()->tamanio_xuxemon;
 
                 // Asignamos el xuxemon aleatorio al usuario
                 XuxemonUsuario::create([
                     'id_usuario' => $usuario->id,
                     'id_xuxemon' => $xuxemon->id,
-                    'tamanio' => $tamanio,
+                    'tamanio' => $tamanio_xuxemon,
                 ]);
 
                 // Devolvemos un mensaje de éxito

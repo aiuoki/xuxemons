@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Models\Mochila;
 
 class UserController extends Controller
 {
@@ -35,11 +34,6 @@ class UserController extends Controller
             ]);
 
             $user = User::create($data);
-            $usuario = User::where('nick', $data['nick'])->first();
-
-            $mochila = new MochilaController();
-            $mochila->create($usuario);
-
             return response()->json(['message' => 'Usuario creado correctamente'], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Usuario no insertado'], 404);
