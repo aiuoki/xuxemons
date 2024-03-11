@@ -23,29 +23,23 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
-        try {
-            $data = $request->validate([
-                'nombre' => 'required',
-                'apellidos' => 'required',
-                'nick' => 'required',
-                'email' => 'required',
-                'password' => 'required',
-                'rol' => 'sometimes',
-            ]);
+        $data = $request->validate([
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'nick' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'rol' => 'sometimes',
+        ]);
 
-            $user = User::create($data);
+        $user = User::create($data);
 
-            // seleccionamos el usuario recien creado
-            $usuario = User::where('nick', $data['nick'])->first();
+        // seleccionamos el usuario recien creado
+        $usuario = User::where('nick', $data['nick'])->first();
 
-            // y le creamos una mochila
-            $mochila = new MochilaController();
-            $mochila->create($usuario);
-
-            return response()->json(['message' => 'Usuario creado correctamente'], 200);
-        } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Usuario no insertado'], 404);
-        }
+        // y le creamos una mochila
+        $mochila = new MochilaController();
+        $mochila->create($usuario);
     }
 
     public function update(Request $request, $id) {
