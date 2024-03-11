@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Xuxemon;
 use App\Models\XuxemonUsuario;
+use App\Models\Parametro;
 
 class XuxemonUsuarioController extends Controller
 {
@@ -16,7 +17,6 @@ class XuxemonUsuarioController extends Controller
                 // Seleccionamos un id aleatorio de la lista de xuxemons
                 $xuxemon = Xuxemon::inRandomOrder()->first();
 
-<<<<<<< HEAD
                 // Obtenemos el parametro tamaño
                 $tamanio = Parametro::findOrFail(1)->tamanio_xuxemon;
 
@@ -25,12 +25,6 @@ class XuxemonUsuarioController extends Controller
                     'id_usuario' => $usuario->id,
                     'id_xuxemon' => $xuxemon->id,
                     'tamanio' => $tamanio,
-=======
-                // Asignamos el xuxemon aleatorio al usuario
-                XuxemonUsuario::create([
-                    'id_usuario' => $usuario->id,
-                    'id_xuxemon' => $xuxemon->id
->>>>>>> 346b5399a2370b218266d28e284b7ea67dc4a406
                 ]);
 
                 // Devolvemos un mensaje de éxito
