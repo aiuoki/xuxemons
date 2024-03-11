@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('xuxemons_usuario', function (Blueprint $table) {
+        Schema::create('xuxemons_usuarios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_xuxemon');
-            $table->string('tamanio');
+            $table->string('tamanio')->default('pequenio');
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');

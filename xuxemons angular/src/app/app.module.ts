@@ -3,27 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { XuxemonComponent } from './xuxemon/xuxemon.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
-import { RegisterComponentComponent } from './register-component/register-component.component';
-import { ErrorComponentComponent } from './error-component/error-component.component';
+import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CreateComponent } from './components/xuxemons/create/create.component';
-import { IndexComponent } from './components/xuxemons/index/index.component';
-import { UpdateComponent } from './components/xuxemons/update/update.component';
-import { ParametrosComponent } from './components/parametros/parametros.component';
+import { CreateComponent } from './components/admin/xuxemons/create/create.component';
+import { IndexComponent } from './components/admin/xuxemons/index/index.component';
+import { UpdateComponent } from './components/admin/xuxemons/update/update.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ParametrosComponent } from './components/admin/parametros/parametros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     XuxemonComponent,
-    LoginComponentComponent,
-    RegisterComponentComponent,
-    ErrorComponentComponent,
     CreateComponent,
     IndexComponent,
     UpdateComponent,
+    LoginComponent,
+    RegisterComponent,
+    ErrorComponent,
     ParametrosComponent
   ],
   imports: [

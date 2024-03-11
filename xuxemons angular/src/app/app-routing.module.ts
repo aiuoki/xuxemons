@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { XuxemonComponent } from './xuxemon/xuxemon.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
-import { RegisterComponentComponent } from './register-component/register-component.component';
-import { ErrorComponentComponent } from './error-component/error-component.component';
-import { IndexComponent } from './components/xuxemons/index/index.component';
-import { CreateComponent } from './components/xuxemons/create/create.component';
-import { UpdateComponent } from './components/xuxemons/update/update.component';
-import { ParametrosComponent } from './components/parametros/parametros.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { ParametrosComponent } from './components/admin/parametros/parametros.component';
+import { IndexComponent } from './components/admin/xuxemons/index/index.component';
+import { CreateComponent } from './components/admin/xuxemons/create/create.component';
+import { UpdateComponent } from './components/admin/xuxemons/update/update.component';
+import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
+import { ErrorComponent } from './components/error/error.component';
+
 
 const routes: Routes = [
     {
         path: 'login',
-        component: LoginComponentComponent
+        component: LoginComponent
     },
     {
         path: 'register',
-        component: RegisterComponentComponent
+        component: RegisterComponent
+    },
+    {
+        path: 'parametros',
+        component: ParametrosComponent
     },
     {
         path: 'mostrar-xuxemons',
@@ -31,16 +36,12 @@ const routes: Routes = [
         component: UpdateComponent
     },
     {
-        path: 'error',
-        component: ErrorComponentComponent
-    },
-    {
         path: 'xuxemons',
         component: XuxemonComponent
     },
     {
-        path: 'parametros',
-        component: ParametrosComponent
+        path: 'error',
+        component: ErrorComponent
     },
     {
         path: '',
