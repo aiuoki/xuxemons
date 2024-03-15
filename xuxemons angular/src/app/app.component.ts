@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   estaAutenticado(): boolean {
     return !!localStorage.getItem('access_token');
@@ -27,6 +28,7 @@ export class AppComponent {
   logout() {
     this.authService.logout().subscribe(() => {
       alert('Sesión cerrada');
+      this.router.navigate(['/login']);
     });
   }
 }
