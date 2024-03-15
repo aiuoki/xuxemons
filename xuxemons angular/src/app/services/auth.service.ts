@@ -49,7 +49,13 @@ export class AuthService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.getToken()}`
     });
-    return this.http.get(`${this.apiUrl}/logout`, { headers: headers });
+    return this.http.get(`${this.apiUrl}/logout`, { headers: headers }).pipe(
+      tap(() => {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('token_type');
+        localStorage.removeItem('user');
+      })
+    );
   }
 
   private getToken(): string {

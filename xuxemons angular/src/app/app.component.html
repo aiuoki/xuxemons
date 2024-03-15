@@ -1,22 +1,24 @@
 <nav>
     <a href="">Xuxemons</a>
     <div class="botones">
-        <ng-container>
+        <ng-container *ngIf="!estaAutenticado()">
             <button routerLink="login">Login</button>
             <button routerLink="register">Registro</button>
         </ng-container>
 
-        <ng-container>
-            <button routerLink="parametros">Parametros</button>
-            <button routerLink="mostrar-xuxemons">Xuxemons</button>
-            <button (click)="xuxemonAleatorio()">Xuxemon Aleatorio</button>
-        </ng-container>
-        
-        <ng-container>
-            <button routerLink="xuxemons">Lista de xuxemons</button>
-        </ng-container>
+        <ng-container *ngIf="estaAutenticado()">
+            <ng-container *ngIf="esAdmin()">
+                <button routerLink="parametros">Parametros</button>
+                <button routerLink="mostrar-xuxemons">Xuxemons</button>
+                <button (click)="xuxemonAleatorio()">Xuxemon Aleatorio</button>
+            </ng-container>
+            
+            <ng-container *ngIf="!esAdmin()">
+                <button routerLink="xuxemons">Lista de xuxemons</button>
+            </ng-container>
 
-        <button (click)="logout()">Logout</button>
+            <button (click)="logout()">Logout</button>
+        </ng-container>
     </div>
 </nav>
 
