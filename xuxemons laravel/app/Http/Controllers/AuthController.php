@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Mochila;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,6 +25,10 @@ class AuthController extends Controller
 
         $data = $validator->validated();
         $user = User::create($data);
+
+        Mochila::create([
+            'user_id' => $user->id,
+        ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

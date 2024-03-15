@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Mochila;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -41,6 +42,12 @@ class UserController extends Controller
 
         $data = $validator->validated();
         $user = User::create($data);
+
+        if ($user->rol === 'usuario') {
+            Mochila::create([
+                'user_id' => $user->id,
+            ]);
+        }
 
         return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
     }

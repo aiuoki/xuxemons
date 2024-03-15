@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class XuxemonSeeder extends Seeder
 {
@@ -13,18 +14,21 @@ class XuxemonSeeder extends Seeder
      */
     public function run(): void
     {
-        // datos de prueba
-        $nombres = ['Bambino', 'Flipper', 'Beebo', 'Cabrales', 'Eldientes'];
-        $tipos = ['tierra', 'agua', 'aire', 'tierra', 'agua'];
-        $archivos = ['bambino.png', 'flipper.png', 'beebo.png', 'cabrales.png', 'eldientes.png'];
+        $jsonPath = database_path('data/xuxemons.json');
 
-        for ($i=0; $i < 5; $i++) {
-            // inserta xuxemons con los datos de prueba
-            DB::table('xuxemons')->insert([
-                'nombre' => $nombres[$i],
-                'tipo' => $tipos[$i],
-                'archivo' => $archivos[$i]
-            ]);
+        if (File::exists($jsonPath)) {
+            $jsonData = File::get($jsonPath);
+            $xuxemons = json_decode($jsonData, true);
+
+            foreach ($xuxemons as $xuxemon) {
+                DB::table('xuxemons')->insert([
+                    'nombre' => $xuxemon['nombre'],
+                    'tipo' => $xuxemon['tipo'],
+                    'archivo' => $xuxemon['archivo']
+                ]);
+            }
+        } else {
+            echo "El archivo JSON no existe.";
         }
     }
 }

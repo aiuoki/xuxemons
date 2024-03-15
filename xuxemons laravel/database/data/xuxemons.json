@@ -1,0 +1,242 @@
+[
+    {
+        "nombre": "Apleki",
+        "tipo": "tierra",
+        "archivo": "apleki.png"
+    },
+    {
+        "nombre": "Avecrem",
+        "tipo": "aire",
+        "archivo": "avecrem.png"
+    },
+    {
+        "nombre": "Bambino",
+        "tipo": "tierra",
+        "archivo": "bambino.png"
+    },
+    {
+        "nombre": "Beeboo",
+        "tipo": "aire",
+        "archivo": "beeboo.png"
+    },
+    {
+        "nombre": "Boo-hoot",
+        "tipo": "aire",
+        "archivo": "boo-hoot.png"
+    },
+    {
+        "nombre": "Cabrales",
+        "tipo": "tierra",
+        "archivo": "cabrales.png"
+    },
+    {
+        "nombre": "Catua",
+        "tipo": "aire",
+        "archivo": "catua.png"
+    },
+    {
+        "nombre": "Catyuska",
+        "tipo": "aire",
+        "archivo": "catyuska.png"
+    },
+    {
+        "nombre": "Chapapá",
+        "tipo": "agua",
+        "archivo": "chapapa.png"
+    },
+    {
+        "nombre": "Chopper",
+        "tipo": "tierra",
+        "archivo": "chopper.png"
+    },
+    {
+        "nombre": "Cuellilargui",
+        "tipo": "tierra",
+        "archivo": "cuellilargui.png"
+    },
+    {
+        "nombre": "Deskangoo",
+        "tipo": "tierra",
+        "archivo": "deskangoo.png"
+    },
+    {
+        "nombre": "Doflamingo",
+        "tipo": "aire",
+        "archivo": "doflamingo.png"
+    },
+    {
+        "nombre": "Dolly",
+        "tipo": "tierra",
+        "archivo": "dolly.png"
+    },
+    {
+        "nombre": "Elconchudo",
+        "tipo": "agua",
+        "archivo": "elconchudo.png"
+    },
+    {
+        "nombre": "Eldientes",
+        "tipo": "agua",
+        "archivo": "eldientes.png"
+    },
+    {
+        "nombre": "Elgominas",
+        "tipo": "tierra",
+        "archivo": "elgominas.png"
+    },
+    {
+        "nombre": "Flipper",
+        "tipo": "agua",
+        "archivo": "flipper.png"
+    },
+    {
+        "nombre": "Floppi",
+        "tipo": "tierra",
+        "archivo": "floppi.png"
+    },
+    {
+        "nombre": "Horseluis",
+        "tipo": "agua",
+        "archivo": "horseluis.png"
+    },
+    {
+        "nombre": "Krokolisko",
+        "tipo": "agua",
+        "archivo": "krokolisko.png"
+    },
+    {
+        "nombre": "Kurama",
+        "tipo": "tierra",
+        "archivo": "kurama.png"
+    },
+    {
+        "nombre": "Ladybug",
+        "tipo": "aire",
+        "archivo": "ladybug.png"
+    },
+    {
+        "nombre": "Lengualargui",
+        "tipo": "tierra",
+        "archivo": "lengualargui.png"
+    },
+    {
+        "nombre": "Medusation",
+        "tipo": "agua",
+        "archivo": "medusation.png"
+    },
+    {
+        "nombre": "Meekmeek",
+        "tipo": "tierra",
+        "archivo": "meekmeek.png"
+    },
+    {
+        "nombre": "Megalo",
+        "tipo": "agua",
+        "archivo": "megalo.png"
+    },
+    {
+        "nombre": "Mocha",
+        "tipo": "agua",
+        "archivo": "mocha.png"
+    },
+    {
+        "nombre": "Murcimurci",
+        "tipo": "aire",
+        "archivo": "murcimurci.png"
+    },
+    {
+        "nombre": "Nemo",
+        "tipo": "agua",
+        "archivo": "nemo.png"
+    },
+    {
+        "nombre": "Oinkcelot",
+        "tipo": "tierra",
+        "archivo": "oinkcelot.png"
+    },
+    {
+        "nombre": "Oreo",
+        "tipo": "tierra",
+        "archivo": "oreo.png"
+    },
+    {
+        "nombre": "Otto",
+        "tipo": "tierra",
+        "archivo": "otto.png"
+    },
+    {
+        "nombre": "Pinchimott",
+        "tipo": "agua",
+        "archivo": "pinchimott.png"
+    },
+    {
+        "nombre": "Pollis",
+        "tipo": "aire",
+        "archivo": "pollis.png"
+    },
+    {
+        "nombre": "Posón",
+        "tipo": "aire",
+        "archivo": "poson.png"
+    },
+    {
+        "nombre": "Quakko",
+        "tipo": "agua",
+        "archivo": "quakko.png"
+    },
+    {
+        "nombre": "Rajoy",
+        "tipo": "aire",
+        "archivo": "rajoy.png"
+    },
+    {
+        "nombre": "Rawlion",
+        "tipo": "tierra",
+        "archivo": "rawlion.png"
+    },
+    {
+        "nombre": "Rexxo",
+        "tipo": "tierra",
+        "archivo": "rexxo.png"
+    },
+    {
+        "nombre": "Ron",
+        "tipo": "tierra",
+        "archivo": "ron.png"
+    },
+    {
+        "nombre": "Sesssi",
+        "tipo": "tierra",
+        "archivo": "sesssi.png"
+    },
+    {
+        "nombre": "Shelly",
+        "tipo": "agua",
+        "archivo": "shelly.png"
+    },
+    {
+        "nombre": "Sirucco",
+        "tipo": "aire",
+        "archivo": "sirucco.png"
+    },
+    {
+        "nombre": "Torcas",
+        "tipo": "agua",
+        "archivo": "torcas.png"
+    },
+    {
+        "nombre": "Trompeta",
+        "tipo": "aire",
+        "archivo": "trompeta.png"
+    },
+    {
+        "nombre": "Trompi",
+        "tipo": "tierra",
+        "archivo": "trompi.png"
+    },
+    {
+        "nombre": "Tux",
+        "tipo": "agua",
+        "archivo": "tux.png"
+    }
+]

@@ -2,32 +2,34 @@
     <div class="formBox">
         <h1>Xuxemons</h1>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Archivo</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let xuxemon of xuxemons">
-                    <td>{{ xuxemon.id }}</td>
-                    <td>{{ xuxemon.nombre }}</td>
-                    <td [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | titlecase }}</td>
-                    <td>{{ xuxemon.archivo }}</td>
-                    <td>
-                        <button (click)="editarXuxemon(xuxemon.id)" class="btn btnEditar">Editar</button>
-                    </td>
-                    <td>
-                        <button (click)="eliminarXuxemon(xuxemon.id)" class="btn btnEliminar">Eliminar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="scrollTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Archivo</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let xuxemon of xuxemons">
+                        <td>{{ xuxemon.id }}</td>
+                        <td>{{ xuxemon.nombre }}</td>
+                        <td [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | titlecase }}</td>
+                        <td>{{ xuxemon.archivo }}</td>
+                        <td>
+                            <button (click)="editarXuxemon(xuxemon.id)" class="btn btnEditar">Editar</button>
+                        </td>
+                        <td>
+                            <button (click)="eliminarXuxemon(xuxemon.id)" class="btn btnEliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
         <a routerLink="/crear-xuxemon">Crear Xuxemon</a>
     </div>
