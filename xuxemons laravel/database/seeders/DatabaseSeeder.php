@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MochilaSeeder::class,
             XuxemonSeeder::class,
-            ChucheSeeder::class,
         ]);
     }
 }
