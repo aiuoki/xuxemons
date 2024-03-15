@@ -19,6 +19,10 @@ const routes: Routes = [
         component: RegisterComponent
     },
     {
+        path: 'error',
+        component: ErrorComponent
+    },
+    {
         path: 'parametros',
         component: ParametrosComponent
     },
@@ -37,10 +41,6 @@ const routes: Routes = [
     {
         path: 'xuxemons',
         component: XuxemonComponent
-    },
-    {
-        path: 'error',
-        component: ErrorComponent
     },
     {
         path: '',
