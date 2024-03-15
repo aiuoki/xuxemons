@@ -13,11 +13,6 @@ class ParametrosSeeder extends Seeder
      */
     public function run(): void
     {
-        // Parametros
-        DB::table('parametros')->insert([
-            'tamanio_xuxemon' => 'pequenio',
-            'caramelos_mediano' => 3,
-            'caramelos_grande' => 5,
-        ]);
+        DB::table('parametros')->insert([]);
     }
 }

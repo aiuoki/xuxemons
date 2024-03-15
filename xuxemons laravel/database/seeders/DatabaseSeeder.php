@@ -15,8 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ParametrosSeeder::class,
             UserSeeder::class,
-            MochilaSeeder::class,
-            XuxemonSeeder::class
+            XuxemonSeeder::class,
         ]);
     }
 }

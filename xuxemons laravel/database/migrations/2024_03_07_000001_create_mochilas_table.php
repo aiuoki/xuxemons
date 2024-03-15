@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('mochilas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');
-            $table->integer('monedas');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->integer('monedas')->default(0);
             $table->timestamps();
-
-            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

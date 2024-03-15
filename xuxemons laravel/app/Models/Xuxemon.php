@@ -14,4 +14,9 @@ class Xuxemon extends Model
         'tipo',
         'archivo',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'users_xuxemons')->withPivot('tamanio');
+    }
 }

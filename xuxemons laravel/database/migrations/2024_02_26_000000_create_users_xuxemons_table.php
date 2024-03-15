@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('xuxemons_usuarios', function (Blueprint $table) {
+        Schema::create('users_xuxemons', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_xuxemon');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('xuxemon_id')->constrained('xuxemons')->onDelete('cascade');
             $table->string('tamanio');
             $table->timestamps();
-
-            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_xuxemon')->references('id')->on('xuxemons')->onDelete('cascade');
         });
     }
 

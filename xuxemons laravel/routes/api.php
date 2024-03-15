@@ -3,7 +3,10 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\XuxemonController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChucheController;
+use App\Http\Controllers\ChucheMochilaController;
 use App\Http\Controllers\ParametroController;
+use App\Http\Controllers\UserXuxemonController;
 use App\Http\Controllers\XuxemonUsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,36 +22,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/check-nick', [UserController::class, 'checkNickAvailability']);
+Route::post('/check-email', [UserController::class, 'checkEmailAvailability']);
 
-Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('logout', [AuthController::class, 'logout']);
+
+    Route::get('xuxemonsUsuario/{userId}', [UserXuxemonController::class, 'obtenerXuxemonsDeUsuario']);
+    Route::get('xuxemonUsuario/{userId}/{xuxemonId}', [UserXuxemonController::class, 'obtenerXuxemonEspecificoDeUsuario']);
+
+    Route::get('chuchesMochila/{userId}', [ChucheMochilaController::class, 'obtenerChuchesDeMochila']);
+    Route::get('chucheMochila/{userId}/{chucheId}', [ChucheMochilaController::class, 'obtenerChucheEspecificaDeMochila']);
+
+    Route::group(['middleware' => ['check.admin']], function () {
+        Route::apiResource('parametros', ParametroController::class);
+
+        Route::apiResource('users', UserController::class);
+
+        Route::post('/xuxemon/check-nombre', [XuxemonController::class, 'checkNombreAvailability']);
+        Route::post('/xuxemon/check-archivo', [XuxemonController::class, 'checkArchivoAvailability']);
+        Route::apiResource('xuxemons', XuxemonController::class);
+        Route::get('xuxemonAleatorio', [UserXuxemonController::class, 'asignarXuxemonAleatorio']);
+
+        Route::post('/chuche/check-nombre', [ChucheController::class, 'checkNombreAvailability']);
+        Route::post('/chuche/check-archivo', [ChucheController::class, 'checkArchivoAvailability']);
+        Route::apiResource('chuches', ChucheController::class);
+        Route::get('chucheAleatoria', [ChucheMochilaController::class, 'asignarChucheAleatoria']);
+    });
 });
-
-Route::get('users', [UserController::class, 'index'])->name('users.index');
-Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
-Route::post('users', [UserController::class, 'store'])->name('users.store');
-Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
-Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-
-Route::get('users/nick/{nick}', [UserController::class, 'comprobarNick'])->name('users.comprobarNick');
-Route::get('users/email/{email}', [UserController::class, 'comprobarEmail'])->name('users.comprobarEmail');
-
-Route::get('xuxemons', [XuxemonController::class, 'index'])->name('xuxemons.index');
-Route::get('xuxemons/{id}', [XuxemonController::class, 'show'])->name('xuxemons.show');
-Route::post('xuxemons', [XuxemonController::class, 'store'])->name('xuxemons.store');
-Route::put('xuxemons/{id}', [XuxemonController::class, 'update'])->name('xuxemons.update');
-Route::delete('xuxemons/{id}', [XuxemonController::class, 'destroy'])->name('xuxemons.destroy');
-
-Route::get('xuxemons/nombre/{nombre}', [XuxemonController::class, 'comprobarNombre'])->name('xuxemons.comprobarNombre');
-Route::get('xuxemons/archivo/{archivo}', [XuxemonController::class, 'comprobarArchivo'])->name('xuxemons.comprobarArchivo');
-
-Route::get('xuxemon/aleatorio', [XuxemonUsuarioController::class, 'xuxemonAleatorio'])->name('xuxemon.aleatorio');
-
-Route::get('parametros/{id}', [ParametroController::class, 'show'])->name('parametros.show');
-Route::put('parametros/{id}', [ParametroController::class, 'update'])->name('parametros.update');

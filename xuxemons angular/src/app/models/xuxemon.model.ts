@@ -1,4 +1,4 @@
-export interface Xuxemon {
+export class Xuxemon {
     id: number;
     nombre: string;
     tipo: string;

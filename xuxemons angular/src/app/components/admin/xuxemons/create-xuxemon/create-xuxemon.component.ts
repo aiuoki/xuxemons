@@ -1,53 +1,26 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { XuxemonService } from '../../../../services/xuxemon.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { forkJoin, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { XuxemonService } from 'src/app/services/xuxemon.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { forkJoin, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  selector: 'app-create-xuxemon',
+  templateUrl: './create-xuxemon.component.html',
+  styleUrls: ['./create-xuxemon.component.css']
 })
-export class UpdateComponent {
-  oldNombre: string = '';
-  oldArchivo: string = '';
-
-  constructor(private route: ActivatedRoute, public xuxemonService: XuxemonService, private router: Router) {
+export class CreateXuxemonComponent {
+  constructor(private xuxemonService: XuxemonService, private router: Router) {
     this.form.valueChanges.subscribe(() => {
       this.checkForm();
     });
   }
 
-  xuxemon: any;
-
   form: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required]),
+    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z-]*$')]),
     tipo: new FormControl('', [Validators.required, Validators.pattern('^(aire|agua|tierra)$')]),
-    archivo: new FormControl('', [Validators.required])
+    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-z.]*$')])
   });
-
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      this.xuxemonService.show(+id).subscribe(
-        data => {
-          this.xuxemon = data;
-          // Asignar los valores actuales a las nuevas propiedades
-          this.oldNombre = data.nombre;
-          this.oldArchivo = data.archivo;
-          this.form.setValue({
-            nombre: data.nombre,
-            tipo: data.tipo,
-            archivo: data.archivo
-          });
-        },
-        error => console.error(error)
-      );
-    }
-  }
 
   errorNombre: string = '';
   errorArchivo: string = '';
@@ -67,16 +40,15 @@ export class UpdateComponent {
       this.errorArchivo = 'El archivo solo puede contener letras minúsculas y puntos';
     }
   }
-
-  editarXuxemon() {
-    const id = this.xuxemon.id;
+  
+  crearXuxemon() {
     const nombre = this.form.value.nombre;
     const tipo = this.form.value.tipo;
     const archivo = this.form.value.archivo;
 
     forkJoin({
-      nombreExists: nombre !== this.oldNombre ? this.xuxemonService.comprobarNombre(nombre) : of({ exists: false }),
-      archivoExists: archivo !== this.oldArchivo ? this.xuxemonService.comprobarArchivo(archivo) : of({ exists: false })
+      nombreExists: this.xuxemonService.checkNombreAvailability(nombre),
+      archivoExists: this.xuxemonService.checkArchivoAvailability(archivo)
     }).pipe(
       tap(({ nombreExists, archivoExists }) => {
         if (nombreExists.exists) {
@@ -84,7 +56,7 @@ export class UpdateComponent {
           const nombreControl = this.form.get('nombre');
           if (nombreControl) {
             nombreControl.setErrors({ 'exists': true });
-            nombreControl.markAsTouched(); // Forzar la actualización de la vista
+            nombreControl.markAsTouched();
           }
         }
         if (archivoExists.exists) {
@@ -92,19 +64,21 @@ export class UpdateComponent {
           const archivoControl = this.form.get('archivo');
           if (archivoControl) {
             archivoControl.setErrors({ 'exists': true });
-            archivoControl.markAsTouched(); // Forzar la actualización de la vista
+            archivoControl.markAsTouched();
           }
         }
       })
     ).subscribe({
       next: ({ nombreExists, archivoExists }) => {
         if (!nombreExists.exists && !archivoExists.exists) {
-          this.xuxemonService.update(id, nombre, tipo, archivo).subscribe({
-            next: value => {
-              console.log(value);
-              this.router.navigate(['/mostrar-xuxemons']); // Redirige al usuario
+          this.xuxemonService.store({ nombre, tipo, archivo }).subscribe({
+            next: (response) => {
+              alert('Xuxemon creado!');
+              this.router.navigate(['/mostrar-xuxemons']);
             },
-            error: err => console.log(err)
+            error: (error) => {
+              alert('Error al crear el xuxemon. Por favor, verifica los datos ingresados.');
+            }
           });
         }
       },

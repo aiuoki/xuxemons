@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { XuxemonService } from '../../../../services/xuxemon.service';
 import { Router } from '@angular/router';
+import { Xuxemon } from 'src/app/models/xuxemon.model';
+import { XuxemonService } from 'src/app/services/xuxemon.service';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'app-index-xuxemons',
+  templateUrl: './index-xuxemons.component.html',
+  styleUrls: ['./index-xuxemons.component.css']
 })
-export class IndexComponent {
-  xuxemons: any[] = [];
+export class IndexXuxemonsComponent {
+  xuxemons: Xuxemon[] = [];
 
-  constructor(private xuxemonService: XuxemonService, private router: Router) { }
+  constructor(public xuxemonService: XuxemonService, private router: Router) { }
 
   ngOnInit() {
     this.xuxemonService.index().subscribe(

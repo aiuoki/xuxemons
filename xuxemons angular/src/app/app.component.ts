@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { XuxemonService } from './services/xuxemon.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,17 @@ import { XuxemonService } from './services/xuxemon.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private xuxemonService: XuxemonService) { }
+  constructor(private authService: AuthService) { }
 
   xuxemonAleatorio() {
-    this.xuxemonService.xuxemonAleatorio().subscribe(() => {
-      alert('Xuxemon aleatorio asignado a cada usuario');
+    // this.xuxemonService.xuxemonAleatorio().subscribe(() => {
+    //   alert('Xuxemon aleatorio asignado a cada usuario');
+    // });
+  }
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      alert('Sesión cerrada');
     });
   }
 }

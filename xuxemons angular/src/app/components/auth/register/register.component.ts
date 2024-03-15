@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { forkJoin } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { forkJoin, tap } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(public usuarioService: UsuarioService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router) {
     this.formRegister.valueChanges.subscribe(() => {
       this.checkForm();
     });
@@ -89,8 +88,8 @@ export class RegisterComponent {
     const password = this.formRegister.value.password;
   
     forkJoin({
-      nickExists: this.usuarioService.comprobarNick(nick),
-      emailExists: this.usuarioService.comprobarEmail(email)
+      nickExists: this.authService.checkNickAvailability(nick),
+      emailExists: this.authService.checkEmailAvailability(email)
     }).pipe(
       tap(({ nickExists, emailExists }) => {
         if (nickExists.exists) {
@@ -98,7 +97,7 @@ export class RegisterComponent {
           const nickControl = this.formRegister.get('nick');
           if (nickControl) {
             nickControl.setErrors({ 'exists': true });
-            nickControl.markAsTouched(); // Forzar la actualización de la vista
+            nickControl.markAsTouched();
           }
         }
         if (emailExists.exists) {
@@ -106,19 +105,21 @@ export class RegisterComponent {
           const emailControl = this.formRegister.get('email');
           if (emailControl) {
             emailControl.setErrors({ 'exists': true });
-            emailControl.markAsTouched(); // Forzar la actualización de la vista
+            emailControl.markAsTouched();
           }
         }
       })
     ).subscribe({
       next: ({ nickExists, emailExists }) => {
         if (!nickExists.exists && !emailExists.exists) {
-          this.usuarioService.registrarUsuario(nombre, apellidos, nick, email, password).subscribe({
-            next: value => {
-              alert('Usuario registrado');
-              this.router.navigate(['/xuxemons']); // Redirige al usuario
+          this.authService.register({ nombre, apellidos, nick, email, password }).subscribe({
+            next: (response) => {
+              alert('Registro exitoso!');
+              this.router.navigate(['/xuxemons']);
             },
-            error: err => console.log(err)
+            error: (error) => {
+              alert('Error en el registro. Por favor, verifica los datos ingresados.');
+            }
           });
         }
       },

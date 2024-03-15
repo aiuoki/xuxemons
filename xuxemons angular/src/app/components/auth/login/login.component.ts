@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(public usuarioService: UsuarioService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router) {
     this.formLogin.valueChanges.subscribe(() => {
       this.checkForm();
     });
@@ -41,17 +40,13 @@ export class LoginComponent {
     const email = this.formLogin.value.email;
     const password = this.formLogin.value.password;
 
-    this.usuarioService.loginUsuario(email, password).subscribe({
-      next: value => {
-        if (value) {
-          alert('Login correcto');
-          this.router.navigate(['/xuxemons']);
-        } else {
-          this.errorUsuario = 'Usuario o contraseña incorrectos';
-        }
+    this.authService.login({ email, password }).subscribe({
+      next: (response) => {
+        alert('Login correcto!');
+        this.router.navigate(['/xuxemons']);
       },
-      error: err => {
-        console.error(err);
+      error: (error) => {
+        alert('Usuario o contraseña incorrectos.');
       }
     });
   }

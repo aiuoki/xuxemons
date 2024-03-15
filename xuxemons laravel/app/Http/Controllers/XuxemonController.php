@@ -4,79 +4,89 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Xuxemon;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Validator;
 
 class XuxemonController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $xuxemons = Xuxemon::all();
-        return response()->json($xuxemons, 200);
+        return response()->json($xuxemons);
     }
 
-    public function show($id) {
-        try {
-            $xuxemon = Xuxemon::findOrFail($id);
-            return response()->json($xuxemon, 200);
-        } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Xuxémon no encontrado'], 404);
+    public function show($id)
+    {
+        $xuxemon = Xuxemon::find($id);
+        if ($xuxemon) {
+            return response()->json($xuxemon);
+        } else {
+            return response()->json(['message' => 'Xuxemon not found'], 404);
         }
     }
 
-    public function store(Request $request) {
-        try {
-            $data = $request->validate([
-                'nombre' => 'required',
-                'tipo' => 'required|in:agua,aire,tierra',
-                'archivo' => 'required',
-            ]);
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|unique:xuxemons',
+            'tipo' => 'required|string',
+            'archivo' => 'required|string|unique:xuxemons',
+        ]);
 
-            $xuxemon = Xuxemon::create($data);
-            return response()->json(['message' => 'Xuxémon creado correctamente'], 200);
-        } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Xuxémon no insertado'], 404);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
         }
+
+        $data = $validator->validated();
+        $xuxemon = Xuxemon::create($data);
+
+        return response()->json(['message' => 'Xuxemon created successfully', 'xuxemon' => $xuxemon], 201);
     }
 
-    public function update(Request $request, $id) {
-        try {
-            $data = $request->validate([
-                'nombre' => 'required',
-                'tipo' => 'required',
-                'archivo' => 'required',
+    public function update(Request $request, $id)
+    {
+        $xuxemon = Xuxemon::find($id);
+        if ($xuxemon) {
+            $validator = Validator::make($request->all(), [
+                'nombre' => 'required|string|unique:xuxemons,nombre,'.$xuxemon->id,
+                'tipo' => 'required|string',
+                'archivo' => 'required|string|unique:xuxemons,archivo,'.$xuxemon->id,
             ]);
-    
-            $xuxemon = Xuxemon::findOrFail($id);
+
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 400);
+            }
+
+            $data = $validator->validated();
             $xuxemon->update($data);
-    
-            return response()->json(['xuxemon' => $xuxemon, 'message' => 'Xuxémon actualizado correctamente'], 200);
-        } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Xuxémon no actualizado'], 404);
+
+            return response()->json(['message' => 'Xuxemon updated successfully', 'xuxemon' => $xuxemon]);
+        } else {
+            return response()->json(['message' => 'Xuxemon not found'], 404);
         }
     }
 
-    public function destroy($id) {
-        $xuxemon = Xuxemon::findOrFail($id);
-        $xuxemon->delete();
-        return response()->json(['message' => 'Xuxémon eliminado correctamente'], 200);
+    public function destroy($id)
+    {
+        $xuxemon = Xuxemon::find($id);
+        if ($xuxemon) {
+            $xuxemon->delete();
+            return response()->json(['message' => 'Xuxemon deleted successfully']);
+        } else {
+            return response()->json(['message' => 'Xuxemon not found'], 404);
+        }
     }
 
-    public function comprobarNombre($nombre) {
-        $xuxemon = Xuxemon::where('nombre', $nombre)->first();
-    
-        if ($xuxemon) {
-            return response()->json(['exists' => true], 200);
-        } else {
-            return response()->json(['exists' => false], 200);
-        }
+    public function checkNombreAvailability(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $exists = Xuxemon::where('nombre', $nombre)->exists();
+        return response()->json(['exists' => $exists], 200);
     }
-    
-    public function comprobarArchivo($archivo) {
-        $xuxemon = Xuxemon::where('archivo', $archivo)->first();
-    
-        if ($xuxemon) {
-            return response()->json(['exists' => true], 200);
-        } else {
-            return response()->json(['exists' => false], 200);
-        }
+
+    public function checkArchivoAvailability(Request $request)
+    {
+        $archivo = $request->input('archivo');
+        $exists = Xuxemon::where('archivo', $archivo)->exists();
+        return response()->json(['exists' => $exists], 200);
     }
 }

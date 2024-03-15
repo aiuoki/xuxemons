@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { ParametrosComponent } from './components/admin/parametros/parametros.component';
-import { IndexComponent } from './components/admin/xuxemons/index/index.component';
-import { CreateComponent } from './components/admin/xuxemons/create/create.component';
-import { UpdateComponent } from './components/admin/xuxemons/update/update.component';
-import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
 import { ErrorComponent } from './components/error/error.component';
-
+import { ParametrosComponent } from './components/admin/parametros/parametros.component';
+import { IndexXuxemonsComponent } from './components/admin/xuxemons/index-xuxemons/index-xuxemons.component';
+import { CreateXuxemonComponent } from './components/admin/xuxemons/create-xuxemon/create-xuxemon.component';
+import { UpdateXuxemonComponent } from './components/admin/xuxemons/update-xuxemon/update-xuxemon.component';
+import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
 
 const routes: Routes = [
     {
@@ -25,15 +24,15 @@ const routes: Routes = [
     },
     {
         path: 'mostrar-xuxemons',
-        component: IndexComponent
+        component: IndexXuxemonsComponent
     },
     {
         path: 'crear-xuxemon',
-        component: CreateComponent
+        component: CreateXuxemonComponent
     },
     {
         path: 'editar-xuxemon/:id',
-        component: UpdateComponent
+        component: UpdateXuxemonComponent
     },
     {
         path: 'xuxemons',

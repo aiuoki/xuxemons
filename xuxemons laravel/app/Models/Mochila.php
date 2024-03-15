@@ -10,7 +10,17 @@ class Mochila extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_usuario',
+        'user_id',
         'monedas',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function chuches()
+    {
+        return $this->belongsToMany(Chuche::class, 'mochilas_chuches')->withPivot('cantidad');
+    }
 }

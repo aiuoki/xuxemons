@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('chuches', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('archivo');
+            $table->string('nombre')->unique();
+            $table->string('archivo')->unique();
             $table->integer('puntos');
             $table->decimal('precio', $precision = 5, $scale = 2);
             $table->timestamps();

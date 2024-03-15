@@ -13,13 +13,13 @@ class XuxemonSeeder extends Seeder
      */
     public function run(): void
     {
-        // Datos de prueba
+        // datos de prueba
         $nombres = ['Bambino', 'Flipper', 'Beebo', 'Cabrales', 'Eldientes'];
         $tipos = ['tierra', 'agua', 'aire', 'tierra', 'agua'];
         $archivos = ['bambino.png', 'flipper.png', 'beebo.png', 'cabrales.png', 'eldientes.png'];
 
         for ($i=0; $i < 5; $i++) {
-            //inserta xuxemons con los datos de prueba
+            // inserta xuxemons con los datos de prueba
             DB::table('xuxemons')->insert([
                 'nombre' => $nombres[$i],
                 'tipo' => $tipos[$i],

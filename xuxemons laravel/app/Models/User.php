@@ -26,6 +26,16 @@ class User extends Authenticatable
         'rol',
     ];
 
+    public function xuxemons()
+    {
+        return $this->belongsToMany(Xuxemon::class, 'users_xuxemons')->withPivot('tamanio');
+    }
+
+    public function mochila()
+    {
+        return $this->hasOne(Mochila::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

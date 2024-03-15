@@ -15,4 +15,9 @@ class Chuche extends Model
         'puntos',
         'precio',
     ];
+
+    public function mochilas()
+    {
+        return $this->belongsToMany(Mochila::class, 'mochilas_chuches')->withPivot('cantidad');
+    }
 }

@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Datos de prueba
+        // datos de prueba
         $nombres = ['Admin', 'Daniel'];
         $apellidos = ['', 'Ceban'];
         $nicks = ['admin', 'dan'];
@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $roles = ['admin', 'usuario'];
 
         for ($i=0; $i < 2; $i++) {
-            //inserta dos usuarios con los datos de prueba
+            // inserta dos usuarios con los datos de prueba
             DB::table('users')->insert([
                 'nombre' => $nombres[$i],
                 'apellidos' => $apellidos[$i],

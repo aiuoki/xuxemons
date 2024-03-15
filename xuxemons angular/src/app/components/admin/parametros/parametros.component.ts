@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ParametrosService } from 'src/app/services/parametros.service';
-
+import { ParametroService } from 'src/app/services/parametro.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-parametros',
@@ -10,7 +9,7 @@ import { ParametrosService } from 'src/app/services/parametros.service';
   styleUrls: ['./parametros.component.css']
 })
 export class ParametrosComponent {
-  constructor(private route: ActivatedRoute, public parametrosService: ParametrosService) {
+  constructor(private route: ActivatedRoute, public parametroService: ParametroService) {
     this.form.valueChanges.subscribe(() => {
       this.checkForm();
     });
@@ -25,20 +24,17 @@ export class ParametrosComponent {
   });
 
   ngOnInit() {
-    const id = 1;
-    if (id !== null) {
-      this.parametrosService.show(+id).subscribe(
-        data => {
-          this.parametros = data;
-          this.form.setValue({
-            tamanio: data.tamanio_xuxemon,
-            caramelosMediano: data.caramelos_mediano,
-            caramelosGrande: data.caramelos_grande
-          });
-        },
-        error => console.error(error)
-      );
-    }
+    this.parametroService.index().subscribe(
+      data => {
+        this.parametros = data;
+        this.form.setValue({
+          tamanio: data.tamanio_xuxemon,
+          caramelosMediano: data.caramelos_mediano,
+          caramelosGrande: data.caramelos_grande
+        });
+      },
+      error => console.error(error)
+    );
   }
 
   errorCaramelosMediano: string = '';
@@ -57,17 +53,17 @@ export class ParametrosComponent {
   }
 
   editarParametros() {
-    const id = this.parametros.id;
-    const tamanio = this.form.value.tamanio;
-    const caramelosMediano = this.form.value.caramelosMediano;
-    const caramelosGrande = this.form.value.caramelosGrande;
+    const tamanio_xuxemon = this.form.value.tamanio;
+    const caramelos_mediano = this.form.value.caramelosMediano;
+    const caramelos_grande = this.form.value.caramelosGrande;
 
-    this.parametrosService.update(id, tamanio, caramelosMediano, caramelosGrande).subscribe({
-      next: value => {
-        console.log(value);
-        alert('Parámetros actualizados');
+    this.parametroService.update({ tamanio_xuxemon, caramelos_mediano, caramelos_grande }).subscribe({
+      next: (response) => {
+        alert('Parametros actualizados!');
       },
-      error: err => console.log(err)
+      error: (error) => {
+        alert('Error al actualizar los parametros. Por favor, verifica los datos ingresados.');
+      }
     });
   }
 }
