@@ -16,14 +16,11 @@
 .scrollTable {
     max-height: 280px;
     overflow-y: auto;
+    margin-bottom: 20px;
 }
 
 table, th, td {
     border: 1px solid #e0e0e0;
-}
-
-table {
-    margin-bottom: 20px;
 }
 
 a {
