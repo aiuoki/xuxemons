@@ -1,7 +1,7 @@
 .xuxemons {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
+    gap: 30px;
     padding: 50px;
 }
 
@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
+    margin: 0 auto;
 }
 
 .xuxemon * {
