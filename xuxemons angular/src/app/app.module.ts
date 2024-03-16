@@ -13,6 +13,7 @@ import { ParametrosComponent } from './components/admin/parametros/parametros.co
 import { IndexXuxemonsComponent } from './components/admin/xuxemons/index-xuxemons/index-xuxemons.component';
 import { CreateXuxemonComponent } from './components/admin/xuxemons/create-xuxemon/create-xuxemon.component';
 import { UpdateXuxemonComponent } from './components/admin/xuxemons/update-xuxemon/update-xuxemon.component';
+import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UpdateXuxemonComponent } from './components/admin/xuxemons/update-xuxem
     ParametrosComponent,
     IndexXuxemonsComponent,
     CreateXuxemonComponent,
-    UpdateXuxemonComponent
+    UpdateXuxemonComponent,
+    XuxedexComponent
   ],
   imports: [
     BrowserModule,
