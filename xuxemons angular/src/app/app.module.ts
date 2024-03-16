@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -18,7 +17,6 @@ import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
 @NgModule({
   declarations: [
     AppComponent,
-    XuxemonComponent,
     LoginComponent,
     RegisterComponent,
     ErrorComponent,
