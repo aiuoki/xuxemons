@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { XuxemonService } from './services/xuxemon.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private xuxemonService: XuxemonService, private authService: AuthService, private router: Router) { }
 
   estaAutenticado(): boolean {
     return !!localStorage.getItem('access_token');
@@ -20,9 +21,9 @@ export class AppComponent {
   }
 
   xuxemonAleatorio() {
-    // this.xuxemonService.xuxemonAleatorio().subscribe(() => {
-    //   alert('Xuxemon aleatorio asignado a cada usuario');
-    // });
+    this.xuxemonService.xuxemonAleatorio().subscribe(() => {
+      alert('Xuxemon aleatorio asignado a cada usuario');
+    });
   }
 
   logout() {

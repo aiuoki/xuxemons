@@ -42,14 +42,14 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
         Route::apiResource('users', UserController::class);
 
+        Route::apiResource('xuxemons', XuxemonController::class);
         Route::post('/xuxemon/check-nombre', [XuxemonController::class, 'checkNombreAvailability']);
         Route::post('/xuxemon/check-archivo', [XuxemonController::class, 'checkArchivoAvailability']);
-        Route::apiResource('xuxemons', XuxemonController::class);
         Route::get('xuxemonAleatorio', [UserXuxemonController::class, 'asignarXuxemonAleatorio']);
 
+        Route::apiResource('chuches', ChucheController::class);
         Route::post('/chuche/check-nombre', [ChucheController::class, 'checkNombreAvailability']);
         Route::post('/chuche/check-archivo', [ChucheController::class, 'checkArchivoAvailability']);
-        Route::apiResource('chuches', ChucheController::class);
         Route::get('chucheAleatoria', [ChucheMochilaController::class, 'asignarChucheAleatoria']);
     });
 });

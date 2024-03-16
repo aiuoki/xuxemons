@@ -39,6 +39,10 @@ export class XuxemonService {
   checkArchivoAvailability(archivo: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/xuxemon/check-archivo`, { archivo }, { headers: this.headers });
   }
+
+  xuxemonAleatorio(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/xuxemonAleatorio`, { headers: this.headers });
+  }
   
   private getToken(): string {
     return localStorage.getItem('access_token') || '';

@@ -7,6 +7,7 @@ import { ParametrosComponent } from './components/admin/parametros/parametros.co
 import { IndexXuxemonsComponent } from './components/admin/xuxemons/index-xuxemons/index-xuxemons.component';
 import { CreateXuxemonComponent } from './components/admin/xuxemons/create-xuxemon/create-xuxemon.component';
 import { UpdateXuxemonComponent } from './components/admin/xuxemons/update-xuxemon/update-xuxemon.component';
+import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
 import { XuxemonComponent } from './components/usuario/xuxemon/xuxemon.component';
 import { AdminGuard } from './admin.guard';
 import { AuthGuard } from './auth.guard';
@@ -43,6 +44,11 @@ const routes: Routes = [
         path: 'editar-xuxemon/:id',
         component: UpdateXuxemonComponent,
         canActivate: [AdminGuard]
+    },
+    {
+        path: 'xuxedex',
+        component: XuxedexComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'xuxemons',
