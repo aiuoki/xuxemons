@@ -1,10 +1,8 @@
-<div>
-    <app-auth-navbar *ngIf="!estaAutenticado()"></app-auth-navbar> <!-- Si no esta autenticado -->
+<app-auth-navbar *ngIf="!estaAutenticado()"></app-auth-navbar> <!-- Si no esta autenticado -->
 
-    <div *ngIf="estaAutenticado()"> <!-- Si esta autenticado -->
-        <app-admin-navbar *ngIf="esAdmin()"></app-admin-navbar> <!-- Si es admin -->
-        <app-user-navbar *ngIf="!esAdmin()"></app-user-navbar> <!-- Si no es admin -->
-    </div>
-</div>
+<ng-container *ngIf="estaAutenticado()"> <!-- Si esta autenticado -->
+    <app-admin-navbar *ngIf="esAdmin()"></app-admin-navbar> <!-- Si es admin -->
+    <app-user-navbar *ngIf="!esAdmin()"></app-user-navbar> <!-- Si no es admin -->
+</ng-container>
 
 <router-outlet></router-outlet>
