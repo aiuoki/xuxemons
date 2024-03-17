@@ -20,12 +20,12 @@ export class ChucheService {
     return this.http.get(`${this.apiUrl}/chuches/${id}`, { headers: this.headers });
   }
 
-  store(xuxemon: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/chuches`, xuxemon, { headers: this.headers });
+  store(chuche: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/chuches`, chuche, { headers: this.headers });
   }
 
-  update(id: number, xuxemon: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/chuches/${id}`, xuxemon, { headers: this.headers });
+  update(id: number, chuche: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/chuches/${id}`, chuche, { headers: this.headers });
   }
 
   destroy(id: number): Observable<any> {
@@ -38,6 +38,10 @@ export class ChucheService {
 
   checkArchivoAvailability(archivo: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/chuche/check-archivo`, { archivo }, { headers: this.headers });
+  }
+
+  chucheAleatoria(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/chucheAleatoria`, { headers: this.headers });
   }
   
   private getToken(): string {

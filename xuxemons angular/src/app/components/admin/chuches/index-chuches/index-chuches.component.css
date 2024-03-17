@@ -1,0 +1,73 @@
+.contenido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92vh;
+}
+
+.formBox {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px;
+}
+
+.scrollTable {
+    max-height: 280px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #e0e0e0;
+}
+
+a {
+    text-decoration: none;
+    color: #c87575;
+}
+
+.tierra {
+    color: rgb(186, 154, 113);
+}
+
+.agua {
+    color: skyblue;
+}
+
+.aire {
+    color: #e5e5e5;
+    text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
+    1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+}
+
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnEditar {
+    background-color: #4CAF50;
+}
+
+.btnEditar:hover {
+    background-color: #3c8f41;
+}
+
+.btnEliminar{
+    background-color: #f44336;
+}
+
+.btnEliminar:hover {
+    background-color: #a32424;
+}

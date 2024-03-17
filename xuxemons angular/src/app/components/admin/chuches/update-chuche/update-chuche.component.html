@@ -1,0 +1,44 @@
+<div class="contenido">
+    <div class="formBox">
+        <h1>Editar Chuche</h1>
+
+        <form [formGroup]="form" (ngSubmit)="editarChuche()" class="form">
+            <div class="inputBox">
+                <input type="text" formControlName="nombre" [ngClass]="{'input-focus': form.get('nombre')?.value}">
+                <span [ngClass]="{'span-focus': form.get('nombre')?.value}">Nombre</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">{{ this.errorNombre }}</div>
+                </div>
+            </div>
+            
+            <div class="inputBox">
+                <input type="text" formControlName="archivo" [ngClass]="{'input-focus': form.get('archivo')?.value}">
+                <span [ngClass]="{'span-focus': form.get('archivo')?.value}">Archivo</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('archivo')?.touched && form.get('archivo')?.invalid">{{ this.errorArchivo }}</div>
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <input type="text" formControlName="puntos" [ngClass]="{'input-focus': form.get('puntos')?.value}">
+                <span [ngClass]="{'span-focus': form.get('puntos')?.value}">Puntos</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('puntos')?.touched && form.get('puntos')?.invalid">{{ this.errorPuntos }}</div>
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <input type="text" formControlName="precio" [ngClass]="{'input-focus': form.get('precio')?.value}">
+                <span [ngClass]="{'span-focus': form.get('precio')?.value}">Precio</span>
+                <div class="errorBox">
+                    <div class="error" *ngIf="form.get('precio')?.touched && form.get('precio')?.invalid">{{ this.errorPrecio }}</div>
+                </div>
+            </div>
+
+            <input type="submit" [ngClass]="form.valid ? 'btnActivado' : 'btnDesactivado'" [disabled]="!form.valid" value="Actualizar Chuche">
+        </form>
+        <a routerLink="/mostrar-chuches">Volver</a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

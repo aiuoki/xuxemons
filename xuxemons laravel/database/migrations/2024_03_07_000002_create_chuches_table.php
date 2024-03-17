@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre')->unique();
             $table->string('archivo')->unique();
             $table->integer('puntos');
-            $table->decimal('precio', $precision = 5, $scale = 2);
+            $table->integer('precio');
             $table->timestamps();
         });
     }

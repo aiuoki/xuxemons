@@ -59,8 +59,6 @@ export class RegisterComponent {
         this.errorNick = 'El nick no puede estar vacío';
       } else if (nickControl.hasError('pattern')) {
         this.errorNick = 'El nick solo puede contener letras y números';
-      } else {
-        this.errorNick = '';
       }
     }
   
@@ -70,8 +68,6 @@ export class RegisterComponent {
         this.errorEmail = 'El email no puede estar vacío';
       } else if (emailControl.hasError('email')) {
         this.errorEmail = 'El email debe ser válido';
-      } else {
-        this.errorEmail = '';
       }
     }
   

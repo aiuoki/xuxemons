@@ -29,8 +29,8 @@ class ChucheController extends Controller
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|unique:chuches',
             'archivo' => 'required|string|unique:chuches',
-            'puntos' => 'required|integer',
-            'precio' => 'required|numeric',
+            'puntos' => 'required|integer|min:1',
+            'precio' => 'required|integer|min:1',
         ]);
 
         if ($validator->fails()) {
@@ -50,8 +50,8 @@ class ChucheController extends Controller
             $validator = Validator::make($request->all(), [
                 'nombre' => 'required|string|unique:chuches,nombre,'.$chuche->id,
                 'archivo' => 'required|string|unique:chuches,archivo,'.$chuche->id,
-                'puntos' => 'required|integer',
-                'precio' => 'required|numeric',
+                'puntos' => 'required|integer|min:1',
+                'precio' => 'required|integer|min:1',
             ]);
 
             if ($validator->fails()) {

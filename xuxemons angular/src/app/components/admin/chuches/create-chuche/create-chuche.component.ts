@@ -1,53 +1,32 @@
 import { Component } from '@angular/core';
-import { XuxemonService } from 'src/app/services/xuxemon.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChucheService } from 'src/app/services/chuche.service';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { forkJoin, of, tap } from 'rxjs';
+import { forkJoin, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-update-xuxemon',
-  templateUrl: './update-xuxemon.component.html',
-  styleUrls: ['./update-xuxemon.component.css']
+  selector: 'app-create-chuche',
+  templateUrl: './create-chuche.component.html',
+  styleUrls: ['./create-chuche.component.css']
 })
-export class UpdateXuxemonComponent {
-  oldNombre: string = '';
-  oldArchivo: string = '';
-
-  constructor(private route: ActivatedRoute, private xuxemonService: XuxemonService, private router: Router) {
+export class CreateChucheComponent {
+  constructor(private chucheService: ChucheService, private router: Router) {
     this.form.valueChanges.subscribe(() => {
       this.checkForm();
     });
   }
 
-  xuxemon: any;
-
   form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z-]*$')]),
-    tipo: new FormControl('', [Validators.required, Validators.pattern('^(aire|agua|tierra)$')]),
-    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-z.]*$')])
+    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-z.]*$')]),
+    puntos: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)]),
+    precio: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)])
   });
-
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      this.xuxemonService.show(+id).subscribe(
-        data => {
-          this.xuxemon = data;
-          this.oldNombre = data.nombre;
-          this.oldArchivo = data.archivo;
-          this.form.setValue({
-            nombre: data.nombre,
-            tipo: data.tipo,
-            archivo: data.archivo
-          });
-        },
-        error => console.error(error)
-      );
-    }
-  }
 
   errorNombre: string = '';
   errorArchivo: string = '';
+  errorPuntos: string = '';
+  errorPrecio: string = '';
 
   checkForm() {
     const nombreControl = this.form.get('nombre');
@@ -63,20 +42,35 @@ export class UpdateXuxemonComponent {
     } else if (archivoControl?.hasError('pattern')) {
       this.errorArchivo = 'El archivo solo puede contener letras minúsculas y puntos';
     }
+
+    const puntosControl = this.form.get('puntos');
+    if (puntosControl?.hasError('required')) {
+      this.errorPuntos = 'Los puntos no pueden estar vacíos';
+    } else if (puntosControl?.hasError('pattern')) {
+      this.errorPuntos = 'Los puntos solo pueden contener números';
+    } else if (puntosControl?.hasError('min')) {
+      this.errorPuntos = 'Los puntos deben ser al menos 1';
+    }
+
+    const precioControl = this.form.get('precio');
+    if (precioControl?.hasError('required')) {
+      this.errorPrecio = 'El precio no puede estar vacío';
+    } else if (precioControl?.hasError('pattern')) {
+      this.errorPrecio = 'El precio solo puede contener números';
+    } else if (precioControl?.hasError('min')) {
+      this.errorPrecio = 'El precio debe ser al menos 1';
+    }
   }
-
-  editarXuxemon() {
-    const id = this.xuxemon.id;
+  
+  crearChuche() {
     const nombre = this.form.value.nombre;
-    const tipo = this.form.value.tipo;
     const archivo = this.form.value.archivo;
-
-    const nombreExists$ = nombre !== this.oldNombre ? this.xuxemonService.checkNombreAvailability(nombre) : of({ exists: false });
-    const archivoExists$ = archivo !== this.oldArchivo ? this.xuxemonService.checkArchivoAvailability(archivo) : of({ exists: false });
+    const puntos = this.form.value.puntos;
+    const precio = this.form.value.precio;
 
     forkJoin({
-      nombreExists: nombreExists$,
-      archivoExists: archivoExists$
+      nombreExists: this.chucheService.checkNombreAvailability(nombre),
+      archivoExists: this.chucheService.checkArchivoAvailability(archivo)
     }).pipe(
       tap(({ nombreExists, archivoExists }) => {
         if (nombreExists.exists) {
@@ -99,13 +93,13 @@ export class UpdateXuxemonComponent {
     ).subscribe({
       next: ({ nombreExists, archivoExists }) => {
         if (!nombreExists.exists && !archivoExists.exists) {
-          this.xuxemonService.update(id, { nombre, tipo, archivo }).subscribe({
+          this.chucheService.store({ nombre, archivo, puntos, precio }).subscribe({
             next: (response) => {
-              alert('Xuxemon actualizado!');
-              this.router.navigate(['/mostrar-xuxemons']);
+              alert('Chuche creada!');
+              this.router.navigate(['/mostrar-chuches']);
             },
             error: (error) => {
-              alert('Error al actualizar el xuxemon. Por favor, verifica los datos ingresados.');
+              alert('Error al crear la chuche. Por favor, verifica los datos ingresados.');
             }
           });
         }

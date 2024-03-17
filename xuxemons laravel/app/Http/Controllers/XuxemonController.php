@@ -28,7 +28,7 @@ class XuxemonController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|unique:xuxemons',
-            'tipo' => 'required|string',
+            'tipo' => 'required|string|in:agua,aire,tierra',
             'archivo' => 'required|string|unique:xuxemons',
         ]);
 
@@ -48,7 +48,7 @@ class XuxemonController extends Controller
         if ($xuxemon) {
             $validator = Validator::make($request->all(), [
                 'nombre' => 'required|string|unique:xuxemons,nombre,'.$xuxemon->id,
-                'tipo' => 'required|string',
+                'tipo' => 'required|string|in:agua,aire,tierra',
                 'archivo' => 'required|string|unique:xuxemons,archivo,'.$xuxemon->id,
             ]);
 

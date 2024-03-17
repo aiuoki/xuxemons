@@ -13,6 +13,9 @@ import { IndexXuxemonsComponent } from './components/admin/xuxemons/index-xuxemo
 import { CreateXuxemonComponent } from './components/admin/xuxemons/create-xuxemon/create-xuxemon.component';
 import { UpdateXuxemonComponent } from './components/admin/xuxemons/update-xuxemon/update-xuxemon.component';
 import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
+import { IndexChuchesComponent } from './components/admin/chuches/index-chuches/index-chuches.component';
+import { CreateChucheComponent } from './components/admin/chuches/create-chuche/create-chuche.component';
+import { UpdateChucheComponent } from './components/admin/chuches/update-chuche/update-chuche.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
     IndexXuxemonsComponent,
     CreateXuxemonComponent,
     UpdateXuxemonComponent,
-    XuxedexComponent
+    XuxedexComponent,
+    IndexChuchesComponent,
+    CreateChucheComponent,
+    UpdateChucheComponent
   ],
   imports: [
     BrowserModule,

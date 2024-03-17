@@ -1,0 +1,37 @@
+<div class="contenido">
+    <div class="formBox">
+        <h1>Chuches</h1>
+
+        <div class="scrollTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Archivo</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let chuche of chuches">
+                        <td>{{ chuche.id }}</td>
+                        <td>{{ chuche.nombre }}</td>
+                        <td>{{ chuche.archivo }}</td>
+                        <td>{{ chuche.puntos }}</td>
+                        <td>{{ chuche.precio }}</td>
+                        <td>
+                            <button (click)="editarChuche(chuche.id)" class="btn btnEditar">Editar</button>
+                        </td>
+                        <td>
+                            <button (click)="eliminarChuche(chuche.id)" class="btn btnEliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <a routerLink="/crear-chuche">Crear Chuche</a>
+    </div>
+</div>
