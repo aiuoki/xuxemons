@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('xuxemon_id')->constrained('xuxemons')->onDelete('cascade');
-            $table->string('tamanio');
+            $table->string('tamanio')->default('pequenio');
             $table->timestamps();
         });
     }
