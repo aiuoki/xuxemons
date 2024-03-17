@@ -43,7 +43,11 @@ export class LoginComponent {
     this.authService.login({ email, password }).subscribe({
       next: (response) => {
         alert('Login correcto!');
-        this.router.navigate(['/xuxedex']);
+        if (response.user?.rol === 'admin'){
+          this.router.navigate(['/parametros']);
+        } else {
+          this.router.navigate(['/xuxedex']);
+        }
       },
       error: (error) => {
         alert('Usuario o contraseña incorrectos.');

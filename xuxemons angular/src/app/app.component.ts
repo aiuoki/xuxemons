@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { XuxemonService } from './services/xuxemon.service';
-import { ChucheService } from './services/chuche.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private xuxemonService: XuxemonService, private chucheService: ChucheService, private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService) { }
 
   estaAutenticado(): boolean {
     return !!localStorage.getItem('access_token');
@@ -19,24 +16,5 @@ export class AppComponent {
   esAdmin(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.rol === 'admin';
-  }
-
-  xuxemonAleatorio() {
-    this.xuxemonService.xuxemonAleatorio().subscribe(() => {
-      alert('Xuxemon aleatorio asignado a cada usuario');
-    });
-  }
-
-  chucheAleatoria() {
-    this.chucheService.chucheAleatoria().subscribe(() => {
-      alert('Chuche aleatoria asignada a cada usuario');
-    });
-  }
-
-  logout() {
-    this.authService.logout().subscribe(() => {
-      alert('Sesión cerrada');
-      this.router.navigate(['/login']);
-    });
   }
 }

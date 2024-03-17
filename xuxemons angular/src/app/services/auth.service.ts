@@ -58,6 +58,13 @@ export class AuthService {
     );
   }
 
+  userMochila(user_id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}/mochilas/${user_id}`, { headers: headers });
+  }
+
   private getToken(): string {
     return localStorage.getItem('access_token') || '';
   }

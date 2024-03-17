@@ -5,9 +5,9 @@ use App\Http\Controllers\XuxemonController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChucheController;
 use App\Http\Controllers\ChucheMochilaController;
+use App\Http\Controllers\MochilaController;
 use App\Http\Controllers\ParametroController;
 use App\Http\Controllers\UserXuxemonController;
-use App\Http\Controllers\XuxemonUsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +30,8 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('logout', [AuthController::class, 'logout']);
+
+    Route::apiResource('mochilas', MochilaController::class);
 
     Route::get('xuxemonsUsuario/{userId}', [UserXuxemonController::class, 'obtenerXuxemonsDeUsuario']);
     Route::get('xuxemonUsuario/{userId}/{xuxemonId}', [UserXuxemonController::class, 'obtenerXuxemonEspecificoDeUsuario']);

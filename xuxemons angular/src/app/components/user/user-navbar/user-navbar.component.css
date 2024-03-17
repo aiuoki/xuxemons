@@ -1,0 +1,37 @@
+.navbar {
+    padding: 20px;
+    background-color: #8735a7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 8px;
+    display: flex;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.botones {
+    margin-left: auto;
+}
+
+.botones button {
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Concert One";
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.monedas {
+    background: #757575;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    display: flex;
+    gap: 10px;
+}

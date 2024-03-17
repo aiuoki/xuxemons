@@ -1,27 +1,10 @@
-<nav>
-    <a href="">Xuxemons</a>
-    <div class="botones">
-        <ng-container *ngIf="!estaAutenticado()">
-            <button routerLink="login">Login</button>
-            <button routerLink="register">Registro</button>
-        </ng-container>
+<div>
+    <app-auth-navbar *ngIf="!estaAutenticado()"></app-auth-navbar> <!-- Si no esta autenticado -->
 
-        <ng-container *ngIf="estaAutenticado()">
-            <ng-container *ngIf="esAdmin()">
-                <button routerLink="parametros">Parametros</button>
-                <button routerLink="mostrar-xuxemons">Xuxemons</button>
-                <button (click)="xuxemonAleatorio()">Xuxemon Aleatorio</button>
-                <button routerLink="mostrar-chuches">Chuches</button>
-                <button (click)="chucheAleatoria()">Chuche Aleatoria</button>
-            </ng-container>
-            
-            <ng-container *ngIf="!esAdmin()">
-                <button routerLink="xuxedex">Xuxedex</button>
-            </ng-container>
-
-            <button (click)="logout()">Logout</button>
-        </ng-container>
+    <div *ngIf="estaAutenticado()"> <!-- Si esta autenticado -->
+        <app-admin-navbar *ngIf="esAdmin()"></app-admin-navbar> <!-- Si es admin -->
+        <app-user-navbar *ngIf="!esAdmin()"></app-user-navbar> <!-- Si no es admin -->
     </div>
-</nav>
+</div>
 
 <router-outlet></router-outlet>

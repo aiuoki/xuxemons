@@ -16,6 +16,9 @@ import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
 import { IndexChuchesComponent } from './components/admin/chuches/index-chuches/index-chuches.component';
 import { CreateChucheComponent } from './components/admin/chuches/create-chuche/create-chuche.component';
 import { UpdateChucheComponent } from './components/admin/chuches/update-chuche/update-chuche.component';
+import { AdminNavbarComponent } from './components/admin/admin-navbar/admin-navbar.component';
+import { UserNavbarComponent } from './components/user/user-navbar/user-navbar.component';
+import { AuthNavbarComponent } from './components/auth/auth-navbar/auth-navbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { UpdateChucheComponent } from './components/admin/chuches/update-chuche/
     XuxedexComponent,
     IndexChuchesComponent,
     CreateChucheComponent,
-    UpdateChucheComponent
+    UpdateChucheComponent,
+    AdminNavbarComponent,
+    UserNavbarComponent,
+    AuthNavbarComponent
   ],
   imports: [
     BrowserModule,
