@@ -8,8 +8,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Tipo</th>
                         <th>Archivo</th>
+                        <th>Puntos</th>
+                        <th>Precio</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -20,7 +21,7 @@
                         <td>{{ chuche.nombre }}</td>
                         <td>{{ chuche.archivo }}</td>
                         <td>{{ chuche.puntos }}</td>
-                        <td>{{ chuche.precio }}</td>
+                        <td>{{ chuche.precio }}$</td>
                         <td>
                             <button (click)="editarChuche(chuche.id)" class="btn btnEditar">Editar</button>
                         </td>
