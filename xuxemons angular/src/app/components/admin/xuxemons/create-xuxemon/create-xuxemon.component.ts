@@ -17,9 +17,9 @@ export class CreateXuxemonComponent {
   }
 
   form: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z-]*$')]),
+    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9- ]*$')]),
     tipo: new FormControl('', [Validators.required, Validators.pattern('^(aire|agua|tierra)$')]),
-    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-z.]*$')])
+    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9-.]*$')])
   });
 
   errorNombre: string = '';
@@ -30,14 +30,14 @@ export class CreateXuxemonComponent {
     if (nombreControl?.hasError('required')) {
       this.errorNombre = 'El nombre no puede estar vacío';
     } else if (nombreControl?.hasError('pattern')) {
-      this.errorNombre = 'El nombre solo puede contener letras y guiones';
+      this.errorNombre = 'El nombre solo puede contener letras, números y guiones';
     }
 
     const archivoControl = this.form.get('archivo');
     if (archivoControl?.hasError('required')) {
       this.errorArchivo = 'El archivo no puede estar vacío';
     } else if (archivoControl?.hasError('pattern')) {
-      this.errorArchivo = 'El archivo solo puede contener letras minúsculas y puntos';
+      this.errorArchivo = 'El archivo solo puede contener letras, números y guiones sin espacios';
     }
   }
   

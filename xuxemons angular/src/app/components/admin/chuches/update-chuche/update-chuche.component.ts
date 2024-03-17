@@ -22,8 +22,8 @@ export class UpdateChucheComponent {
   chuche: any;
 
   form: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z-]*$')]),
-    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-z.]*$')]),
+    nombre: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9- ]*$')]),
+    archivo: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9-.]*$')]),
     puntos: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)]),
     precio: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)])
   });
@@ -58,14 +58,14 @@ export class UpdateChucheComponent {
     if (nombreControl?.hasError('required')) {
       this.errorNombre = 'El nombre no puede estar vacío';
     } else if (nombreControl?.hasError('pattern')) {
-      this.errorNombre = 'El nombre solo puede contener letras y guiones';
+      this.errorNombre = 'El nombre solo puede contener letras, números y guiones';
     }
 
     const archivoControl = this.form.get('archivo');
     if (archivoControl?.hasError('required')) {
       this.errorArchivo = 'El archivo no puede estar vacío';
     } else if (archivoControl?.hasError('pattern')) {
-      this.errorArchivo = 'El archivo solo puede contener letras minúsculas y puntos';
+      this.errorArchivo = 'El archivo solo puede contener letras, números y guiones sin espacios';
     }
 
     const puntosControl = this.form.get('puntos');

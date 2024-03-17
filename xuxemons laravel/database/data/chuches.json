@@ -1,0 +1,62 @@
+[
+    {
+        "nombre": "Candy",
+        "archivo": "candy.png",
+        "puntos": 1,
+        "precio": 5
+    },
+    {
+        "nombre": "Candy 2",
+        "archivo": "candy2.png",
+        "puntos": 1,
+        "precio": 5
+    },
+    {
+        "nombre": "Chocolate Bar",
+        "archivo": "chocolate-bar.png",
+        "puntos": 1,
+        "precio": 5
+    },
+    {
+        "nombre": "Candy Cane",
+        "archivo": "candy-cane.png",
+        "puntos": 1,
+        "precio": 5
+    },
+    {
+        "nombre": "Lollipop",
+        "archivo": "lollipop.png",
+        "puntos": 1,
+        "precio": 5
+    },
+    {
+        "nombre": "Candies",
+        "archivo": "candies.png",
+        "puntos": 2,
+        "precio": 10
+    },
+    {
+        "nombre": "Candies 2",
+        "archivo": "candies2.png",
+        "puntos": 2,
+        "precio": 10
+    },
+    {
+        "nombre": "Cotton Candy",
+        "archivo": "cotton-candy.png",
+        "puntos": 2,
+        "precio": 10
+    },
+    {
+        "nombre": "Candies 3",
+        "archivo": "candies3.png",
+        "puntos": 3,
+        "precio": 15
+    },
+    {
+        "nombre": "Sweets",
+        "archivo": "sweets.png",
+        "puntos": 3,
+        "precio": 15
+    }
+]
