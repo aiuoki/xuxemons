@@ -111,7 +111,7 @@ export class RegisterComponent {
           this.authService.register({ nombre, apellidos, nick, email, password }).subscribe({
             next: (response) => {
               alert('Registro exitoso!');
-              this.router.navigate(['/xuxemons']);
+              this.router.navigate(['/xuxedex']);
             },
             error: (error) => {
               alert('Error en el registro. Por favor, verifica los datos ingresados.');

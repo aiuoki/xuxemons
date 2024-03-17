@@ -43,7 +43,7 @@ export class LoginComponent {
     this.authService.login({ email, password }).subscribe({
       next: (response) => {
         alert('Login correcto!');
-        this.router.navigate(['/xuxemons']);
+        this.router.navigate(['/xuxedex']);
       },
       error: (error) => {
         alert('Usuario o contraseña incorrectos.');
