@@ -3,6 +3,5 @@
         <img [src]="xuxemon.archivo" [ngClass]="{'pequenio': xuxemon.tamanio === 'pequenio', 'mediano': xuxemon.tamanio === 'mediano','grande': xuxemon.tamanio === 'grande'}">
         <h1>{{ xuxemon.nombre }}</h1>
         <h2 [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | uppercase }}</h2>
-        <h4>{{ xuxemon.tamanio }}</h4>
     </div>
 </div>

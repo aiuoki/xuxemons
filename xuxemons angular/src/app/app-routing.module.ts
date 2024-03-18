@@ -13,7 +13,6 @@ import { IndexChuchesComponent } from './components/admin/chuches/index-chuches/
 import { CreateChucheComponent } from './components/admin/chuches/create-chuche/create-chuche.component';
 import { UpdateChucheComponent } from './components/admin/chuches/update-chuche/update-chuche.component';
 import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
-import { BagComponent } from './components/user/bag/bag.component';
 
 const routes: Routes = [
     {
@@ -66,11 +65,6 @@ const routes: Routes = [
     {
         path: 'xuxedex',
         component: XuxedexComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'bag',
-        component: BagComponent,
         canActivate: [AuthGuard]
     },
     {
