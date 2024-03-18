@@ -21,6 +21,7 @@ import { UserNavbarComponent } from './components/user/user-navbar/user-navbar.c
 import { AuthNavbarComponent } from './components/auth/auth-navbar/auth-navbar.component';
 import { UserMainComponent } from './components/user/user-main/user-main.component';
 import { BagComponent } from './components/user/bag/bag.component';
+import { DialogoSeleccionXuxemonComponent } from './dialogo-seleccion-xuxemon/dialogo-seleccion-xuxemon.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BagComponent } from './components/user/bag/bag.component';
     UserNavbarComponent,
     AuthNavbarComponent,
     UserMainComponent,
-    BagComponent
+    BagComponent,
+    DialogoSeleccionXuxemonComponent
   ],
   imports: [
     BrowserModule,

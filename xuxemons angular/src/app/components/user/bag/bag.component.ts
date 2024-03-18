@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bag.component.css']
 })
 export class BagComponent {
-
+  
 }
