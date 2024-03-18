@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('xuxemon_id')->constrained('xuxemons')->onDelete('cascade');
             $table->string('tamanio')->default('pequenio');
+            $table->integer('puntos')->default(0);
             $table->timestamps();
         });
     }
