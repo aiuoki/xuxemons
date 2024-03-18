@@ -19,6 +19,8 @@ import { UpdateChucheComponent } from './components/admin/chuches/update-chuche/
 import { AdminNavbarComponent } from './components/admin/admin-navbar/admin-navbar.component';
 import { UserNavbarComponent } from './components/user/user-navbar/user-navbar.component';
 import { AuthNavbarComponent } from './components/auth/auth-navbar/auth-navbar.component';
+import { UserMainComponent } from './components/user/user-main/user-main.component';
+import { BagComponent } from './components/user/bag/bag.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AuthNavbarComponent } from './components/auth/auth-navbar/auth-navbar.c
     UpdateChucheComponent,
     AdminNavbarComponent,
     UserNavbarComponent,
-    AuthNavbarComponent
+    AuthNavbarComponent,
+    UserMainComponent,
+    BagComponent
   ],
   imports: [
     BrowserModule,
