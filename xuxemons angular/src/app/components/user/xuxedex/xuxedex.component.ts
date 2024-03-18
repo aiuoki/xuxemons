@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Xuxemon } from 'src/app/models/xuxemon.model';
 import { UserXuxemonService } from 'src/app/services/user-xuxemon.service';
 
 @Component({
