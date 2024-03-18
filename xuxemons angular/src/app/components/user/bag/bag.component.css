@@ -1,0 +1,63 @@
+.caramelos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 50px;
+}
+
+.caramelo {
+    width: 200px;
+    height: 260px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.caramelo * {
+    margin: 0;
+}
+
+img {
+    height: 100px;
+
+}
+
+h1 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #666;
+}
+
+select {
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    color: #666;
+    font-size: .9em;
+    padding: 5px;
+    margin: 0 auto;
+    transition: border-color 0.3s ease-in-out;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#submitButton{
+    display: none;
+}
