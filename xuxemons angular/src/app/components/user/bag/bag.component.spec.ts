@@ -19,3 +19,5 @@ describe('BagComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
