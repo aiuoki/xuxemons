@@ -6,6 +6,8 @@ use App\Models\Parametro;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Xuxemon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Chuche;
 
 class UserXuxemonController extends Controller
 {
@@ -50,5 +52,29 @@ class UserXuxemonController extends Controller
         } else {
             return response()->json(['message' => 'Usuario not found'], 404);
         }
+    }
+
+    public function alimentarXuxemonUsuario($mochilaChucheId, $userXuxemonId)
+    {
+        $mochilaChuche = DB::table('mochilas_chuches')->where('id', $mochilaChucheId)->first();
+        $userXuxemon = DB::table('users_xuxemons')->where('id', $userXuxemonId)->first();
+
+        if ($mochilaChuche->cantidad === 1) {
+            DB::table('mochilas_chuches')->where('id', $mochilaChucheId)->delete();
+        } else if ($mochilaChuche->cantidad > 1) {
+            DB::table('mochilas_chuches')->where('id', $mochilaChucheId)->decrement('cantidad', 1);
+        }
+
+        $puntos = $userXuxemon->puntos + Chuche::find($mochilaChuche->chuche_id)->puntos;
+        DB::table('users_xuxemons')->where('id', $userXuxemonId)->update(['puntos' => $puntos]);
+
+        $parametro = Parametro::find(1);
+        if ($puntos >= $parametro->puntos_grande) {
+            DB::table('users_xuxemons')->where('id', $userXuxemonId)->update(['tamanio' => 'grande']);
+        } else if ($puntos >= $parametro->puntos_mediano) {
+            DB::table('users_xuxemons')->where('id', $userXuxemonId)->update(['tamanio' => 'mediano']);
+        }
+
+        return response()->json(['message' => 'Xuxemon alimentado correctamente']);
     }
 }

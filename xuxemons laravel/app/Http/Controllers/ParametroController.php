@@ -24,8 +24,8 @@ class ParametroController extends Controller
         if ($parametro) {
             $validator = Validator::make($request->all(), [
                 'tamanio_xuxemon' => 'string',
-                'caramelos_mediano' => 'integer',
-                'caramelos_grande' => 'integer',
+                'puntos_mediano' => 'integer',
+                'puntos_grande' => 'integer',
             ]);
 
             if ($validator->fails()) {

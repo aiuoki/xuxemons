@@ -29,8 +29,8 @@ export class ParametrosComponent {
         this.parametros = data;
         this.form.setValue({
           tamanio: data.tamanio_xuxemon,
-          caramelosMediano: data.caramelos_mediano,
-          caramelosGrande: data.caramelos_grande
+          caramelosMediano: data.puntos_mediano,
+          caramelosGrande: data.puntos_grande
         });
       },
       error => console.error(error)
@@ -54,10 +54,10 @@ export class ParametrosComponent {
 
   editarParametros() {
     const tamanio_xuxemon = this.form.value.tamanio;
-    const caramelos_mediano = this.form.value.caramelosMediano;
-    const caramelos_grande = this.form.value.caramelosGrande;
+    const puntos_mediano = this.form.value.caramelosMediano;
+    const puntos_grande = this.form.value.caramelosGrande;
 
-    this.parametroService.update({ tamanio_xuxemon, caramelos_mediano, caramelos_grande }).subscribe({
+    this.parametroService.update({ tamanio_xuxemon, puntos_mediano, puntos_grande }).subscribe({
       next: (response) => {
         alert('Parametros actualizados!');
       },

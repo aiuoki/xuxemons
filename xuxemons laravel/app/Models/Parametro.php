@@ -11,7 +11,7 @@ class Parametro extends Model
 
     protected $fillable = [
         'tamanio_xuxemon',
-        'caramelos_mediano',
-        'caramelos_grande',
+        'puntos_mediano',
+        'puntos_grande',
     ];
 }
