@@ -28,6 +28,7 @@ Route::post('/check-email', [UserController::class, 'checkEmailAvailability']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+// quitar
 Route::get('alimentarXuxemonUsuario/{mochilaChucheId}/{userXuxemonId}', [UserXuxemonController::class, 'alimentarXuxemonUsuario']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {

@@ -14,18 +14,18 @@
             </div>
 
             <div class="inputBox">
-                <input type="number" formControlName="caramelosMediano" [ngClass]="{'input-focus': form.get('caramelosMediano')?.value}">
-                <span [ngClass]="{'span-focus': form.get('caramelosMediano')?.value}">Caramelos Mediano</span>
+                <input type="number" formControlName="puntosMediano" [ngClass]="{'input-focus': form.get('puntosMediano')?.value}">
+                <span [ngClass]="{'span-focus': form.get('puntosMediano')?.value}">Caramelos Mediano</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="form.get('caramelosMediano')?.touched && form.get('caramelosMediano')?.invalid">{{ this.errorCaramelosMediano }}</div>
+                    <div class="error" *ngIf="form.get('puntosMediano')?.touched && form.get('puntosMediano')?.invalid">{{ this.errorPuntosMediano }}</div>
                 </div>
             </div>
             
             <div class="inputBox">
-                <input type="number" formControlName="caramelosGrande" [ngClass]="{'input-focus': form.get('caramelosGrande')?.value}">
-                <span [ngClass]="{'span-focus': form.get('caramelosGrande')?.value}">Caramelos Grande</span>
+                <input type="number" formControlName="puntosGrande" [ngClass]="{'input-focus': form.get('puntosGrande')?.value}">
+                <span [ngClass]="{'span-focus': form.get('puntosGrande')?.value}">Caramelos Grande</span>
                 <div class="errorBox">
-                    <div class="error" *ngIf="form.get('caramelosGrande')?.touched && form.get('caramelosGrande')?.invalid">{{ this.errorCaramelosGrande }}</div>
+                    <div class="error" *ngIf="form.get('puntosGrande')?.touched && form.get('puntosGrande')?.invalid">{{ this.errorPuntosGrande }}</div>
                 </div>
             </div>
 
