@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Chuche;
 use App\Models\Mochila;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ChucheMochilaController extends Controller
 {
+    public function alimentarXuxemon($userId, $chucheId, $xuxemonId) {
+        $usuario = User::find($userId);
+        $xuxemon = $usuario->xuxemons()->find($xuxemonId);
+        $chuche = $usuario->mochila->chuches()->find($chucheId);
+    
+        $puntos = $chuche->puntos;
+    }
+
     public function asignarChucheAleatoria()
     {
         $mochilas = Mochila::all();
@@ -37,42 +46,44 @@ class ChucheMochilaController extends Controller
             return response()->json(['message' => 'Mochila not found'], 404);
         }
     }
-    public function AlimentarXuxemon($id_mochila_chuche, $id_user_xuxemon){
-    
-        $mochilaChuche = Mochila::whereHas('chuches', function($query) use ($id_mochila_chuche) {
-            $query->where('chuches.id', $id_mochila_chuche);
-        })->with(['chuches' => function($query) use ($id_mochila_chuche) {
-            $query->where('chuches.id', $id_mochila_chuche)->select('puntos');
-        }])->first();
-    
-        $userXuxemon = User::whereHas('xuxemons', function($query) use ($id_user_xuxemon) {
-            $query->where('xuxemons.id', $id_user_xuxemon);
-        })->first();
-    
-        if ($mochilaChuche && $mochilaChuche->chuches->isNotEmpty()) {
-            $puntos = $mochilaChuche->chuches->first()->puntos;
-        } else {
-            $puntos = 0; // Asumir 0 si no se encuentra la chuche específica
-        }
-    
-        // Actualizar puntos en users_xuxemons
-        if ($userXuxemon && $userXuxemon->xuxemons->isNotEmpty()) {
-            $xuxemon = $userXuxemon->xuxemons->where('id', $id_user_xuxemon)->first();
-            $xuxemon->pivot->puntos += $puntos;
-            $xuxemon->pivot->save();
-        }
 
-        // Restar cantidad en mochilas_chuches y eliminar si llega a 0
-        if ($mochilaChuche && $mochilaChuche->chuches->isNotEmpty()) {
-            $chuche = $mochilaChuche->chuches->where('id', $id_mochila_chuche)->first();
-            $cantidadActual = $chuche->pivot->cantidad - 1;
-            if ($cantidadActual > 0) {
-                $mochilaChuche->chuches()->updateExistingPivot($id_mochila_chuche, ['cantidad' => $cantidadActual]);
-            } else {
-                $mochilaChuche->chuches()->detach($id_mochila_chuche);
-            }
-        }
-        }
+    // public function AlimentarXuxemon($id_mochila_chuche, $id_user_xuxemon){
+    
+    //     $mochilaChuche = Mochila::whereHas('chuches', function($query) use ($id_mochila_chuche) {
+    //         $query->where('chuches.id', $id_mochila_chuche);
+    //     })->with(['chuches' => function($query) use ($id_mochila_chuche) {
+    //         $query->where('chuches.id', $id_mochila_chuche)->select('puntos');
+    //     }])->first();
+    
+    //     $userXuxemon = User::whereHas('xuxemons', function($query) use ($id_user_xuxemon) {
+    //         $query->where('xuxemons.id', $id_user_xuxemon);
+    //     })->first();
+    
+    //     if ($mochilaChuche && $mochilaChuche->chuches->isNotEmpty()) {
+    //         $puntos = $mochilaChuche->chuches->first()->puntos;
+    //     } else {
+    //         $puntos = 0; // Asumir 0 si no se encuentra la chuche específica
+    //     }
+    
+    //     // Actualizar puntos en users_xuxemons
+    //     if ($userXuxemon && $userXuxemon->xuxemons->isNotEmpty()) {
+    //         $xuxemon = $userXuxemon->xuxemons->where('id', $id_user_xuxemon)->first();
+    //         $xuxemon->pivot->puntos += $puntos;
+    //         $xuxemon->pivot->save();
+    //     }
+
+    //     // Restar cantidad en mochilas_chuches y eliminar si llega a 0
+    //     if ($mochilaChuche && $mochilaChuche->chuches->isNotEmpty()) {
+    //         $chuche = $mochilaChuche->chuches->where('id', $id_mochila_chuche)->first();
+    //         $cantidadActual = $chuche->pivot->cantidad - 1;
+    //         if ($cantidadActual > 0) {
+    //             $mochilaChuche->chuches()->updateExistingPivot($id_mochila_chuche, ['cantidad' => $cantidadActual]);
+    //         } else {
+    //             $mochilaChuche->chuches()->detach($id_mochila_chuche);
+    //         }
+    //     }
+    // }
+
     public function obtenerChucheEspecificaDeMochila($userId, $chucheId)
     {
         $mochila = Mochila::where('user_id', $userId)->first();
