@@ -94,16 +94,24 @@ h2 {
 
 .f {
     display: flex;
-    justify-content: center;
+    padding-left: 60px;
 }
 
 .form {
-    background: #fff;
     width: 400px;
+    padding: 2em;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    padding: 2em;
-    border-radius: 25px;
-    text-align: center;
-    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.form h1 {
+    margin: 0;
 }
