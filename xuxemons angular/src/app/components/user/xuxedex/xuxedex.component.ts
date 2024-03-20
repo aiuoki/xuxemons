@@ -54,7 +54,10 @@ export class XuxedexComponent {
     console.log(id_xuxemon, id_chuche);
 
     this.userXuxemonService.alimentarXuxemonUsuario(id_chuche, id_xuxemon).subscribe({
-      next: (response) => alert('Xuxemon alimentado!'),
+      next: (response) => {
+        alert('Xuxemon alimentado!');
+        this.ngOnInit();
+      },
       error: (error) => {
         alert('Error al alimentar el xuxemon.');
       }

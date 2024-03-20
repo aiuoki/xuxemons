@@ -18,7 +18,7 @@
     
         <label>Chuche</label>
         <select formControlName="id_chuche">
-            <option *ngFor="let chuche of chuches" [value]="chuche.pivot.id">{{ chuche.nombre }} - {{ chuche.cantidad }}</option>
+            <option *ngFor="let chuche of chuches" [value]="chuche.pivot.id">{{ chuche.nombre }} - {{ chuche.puntos }}</option>
         </select>
 
         <input type="submit" value="Alimentar Xuxemon">
