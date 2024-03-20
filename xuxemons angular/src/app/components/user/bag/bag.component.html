@@ -1,7 +1,8 @@
-<div class="caramelos">
-    <div class="caramelo">
-        <img src="../../../../assets/chuches/candies.png">
-        <h1>Nombre</h1>
-        <button class="alimentar">Alimentar Xuxemon</button>
+<div class="chuches">
+    <div class="chuche" *ngFor="let chuche of chuches">
+        <img [src]="chuche.archivo">
+        <h1>{{chuche.nombre}}</h1>
+        <h2>Cantidad: {{chuche.cantidad}}</h2>
+        <h2>Puntos: {{chuche.puntos}}</h2>
     </div>
 </div>
