@@ -9,16 +9,16 @@
 </div>
 
 <div class="f">
-    <form class="form">
+    <form class="form" [formGroup]="form" (ngSubmit)="alimentarXuxemon()">
         <h1>Alimentar Xuxemon:</h1>
         <label>Xuxemon</label>
-        <select>
-            <option *ngFor="let xuxemon of xuxemons" [value]="xuxemon.id">{{ xuxemon.nombre }} - {{ xuxemon.tamanio }}</option>
+        <select formControlName="id_xuxemon">
+            <option *ngFor="let xuxemon of xuxemons" [value]="xuxemon.pivot.id">{{ xuxemon.nombre }} - {{ xuxemon.tamanio }}</option>
         </select>
     
         <label>Chuche</label>
-        <select>
-            <option *ngFor="let chuche of chuches" [value]="chuche.id">{{ chuche.nombre }} - {{ chuche.cantidad }}</option>
+        <select formControlName="id_chuche">
+            <option *ngFor="let chuche of chuches" [value]="chuche.pivot.id">{{ chuche.nombre }} - {{ chuche.cantidad }}</option>
         </select>
 
         <input type="submit" value="Alimentar Xuxemon">

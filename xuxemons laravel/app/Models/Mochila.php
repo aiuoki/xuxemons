@@ -21,6 +21,6 @@ class Mochila extends Model
 
     public function chuches()
     {
-        return $this->belongsToMany(Chuche::class, 'mochilas_chuches')->withPivot('cantidad');
+        return $this->belongsToMany(Chuche::class, 'mochilas_chuches')->withPivot('id', 'cantidad');
     }
 }

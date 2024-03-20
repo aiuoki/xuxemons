@@ -28,7 +28,7 @@ class User extends Authenticatable
 
     public function xuxemons()
     {
-        return $this->belongsToMany(Xuxemon::class, 'users_xuxemons')->withPivot('tamanio');
+        return $this->belongsToMany(Xuxemon::class, 'users_xuxemons')->withPivot('id','tamanio');
     }
 
     public function mochila()

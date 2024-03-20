@@ -20,6 +20,10 @@ export class UserXuxemonService {
     return this.http.get(`${this.apiUrl}/xuxemonUsuario/${user_id}/${xuxemon_id}`, { headers: this.headers });
   }
 
+  alimentarXuxemonUsuario(mochilaChucheId: number, userXuxemonId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/alimentarXuxemonUsuario/${mochilaChucheId}/${userXuxemonId}`, { headers: this.headers });
+  }
+
   private getToken(): string {
     return localStorage.getItem('access_token') || '';
   }

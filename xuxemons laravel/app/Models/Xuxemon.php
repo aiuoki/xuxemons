@@ -17,6 +17,6 @@ class Xuxemon extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'users_xuxemons')->withPivot('tamanio');
+        return $this->belongsToMany(User::class, 'users_xuxemons')->withPivot('id', 'tamanio');
     }
 }
