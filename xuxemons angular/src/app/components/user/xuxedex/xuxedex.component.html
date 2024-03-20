@@ -2,6 +2,25 @@
     <div class="xuxemon" *ngFor="let xuxemon of xuxemons">
         <img [src]="xuxemon.archivo" [ngClass]="{'pequenio': xuxemon.tamanio === 'pequenio', 'mediano': xuxemon.tamanio === 'mediano','grande': xuxemon.tamanio === 'grande'}">
         <h1>{{ xuxemon.nombre }}</h1>
+        <h2 *ngIf="xuxemon.tamanio === 'pequenio'">{{ 'pequeño' | uppercase }}</h2>
+        <h2 *ngIf="xuxemon.tamanio !== 'pequenio'">{{ xuxemon.tamanio | uppercase }}</h2>
         <h2 [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | uppercase }}</h2>
     </div>
+</div>
+
+<div class="f">
+    <form class="form">
+        <h1>Alimentar Xuxemon:</h1>
+        <label>Xuxemon</label>
+        <select>
+            <option *ngFor="let xuxemon of xuxemons" [value]="xuxemon.id">{{ xuxemon.nombre }} - {{ xuxemon.tamanio }}</option>
+        </select>
+    
+        <label>Chuche</label>
+        <select>
+            <option *ngFor="let chuche of chuches" [value]="chuche.id">{{ chuche.nombre }} - {{ chuche.cantidad }}</option>
+        </select>
+
+        <input type="submit" value="Alimentar Xuxemon">
+    </form>
 </div>

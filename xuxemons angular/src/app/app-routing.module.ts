@@ -14,6 +14,7 @@ import { CreateChucheComponent } from './components/admin/chuches/create-chuche/
 import { UpdateChucheComponent } from './components/admin/chuches/update-chuche/update-chuche.component';
 import { XuxedexComponent } from './components/user/xuxedex/xuxedex.component';
 import { BagComponent } from './components/user/bag/bag.component';
+import { UserMainComponent } from './components/user/user-main/user-main.component';
 
 const routes: Routes = [
     {
@@ -62,6 +63,11 @@ const routes: Routes = [
         path: 'editar-chuche/:id',
         component: UpdateChucheComponent,
         canActivate: [AdminGuard]
+    },
+    {
+        path: 'user-main',
+        component: UserMainComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'xuxedex',

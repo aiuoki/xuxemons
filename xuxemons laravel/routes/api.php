@@ -28,9 +28,6 @@ Route::post('/check-email', [UserController::class, 'checkEmailAvailability']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-// quitar
-Route::get('alimentarXuxemonUsuario/{mochilaChucheId}/{userXuxemonId}', [UserXuxemonController::class, 'alimentarXuxemonUsuario']);
-
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('logout', [AuthController::class, 'logout']);
 
@@ -41,6 +38,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
     Route::get('chuchesMochila/{userId}', [ChucheMochilaController::class, 'obtenerChuchesDeMochila']);
     Route::get('chucheMochila/{userId}/{chucheId}', [ChucheMochilaController::class, 'obtenerChucheEspecificaDeMochila']);
+    
+    Route::get('alimentarXuxemonUsuario/{mochilaChucheId}/{userXuxemonId}', [UserXuxemonController::class, 'alimentarXuxemonUsuario']);
 
     Route::group(['middleware' => ['check.admin']], function () {
         Route::apiResource('parametros', ParametroController::class);

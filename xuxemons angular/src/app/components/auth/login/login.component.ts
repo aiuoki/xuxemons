@@ -46,7 +46,7 @@ export class LoginComponent {
         if (response.user?.rol === 'admin'){
           this.router.navigate(['/parametros']);
         } else {
-          this.router.navigate(['/xuxedex']);
+          this.router.navigate(['/user-main']);
         }
       },
       error: (error) => {
