@@ -1,0 +1,109 @@
+.chuches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 50px;
+}
+
+.chuche {
+    width: 200px;
+    height: 230px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.chuche * {
+    margin: 0;
+}
+
+.xuxemons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 50px;
+}
+
+.xuxemon {
+    width: 200px;
+    height: 230px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.xuxemon * {
+    margin: 0;
+}
+
+img {
+    height: 100px;
+    /* filter: brightness(0%); */
+}
+
+h1 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #666;
+}
+
+
+.tierra {
+    color: rgb(186, 154, 113);
+}
+
+.agua {
+    color: skyblue;
+}
+
+.aire {
+    color: #e5e5e5;
+    text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
+    1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+}
+
+.pequenio{
+    height: 30px;   
+}
+.mediano{
+    height: 60px;
+}
+.grande{
+    height: 100px;
+}
+
+.f {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    background: #fff;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    border-radius: 25px;
+    text-align: center;
+    gap: 1em;
+}

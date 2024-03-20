@@ -1,2 +1,35 @@
-<app-bag></app-bag>
-<app-xuxedex></app-xuxedex>
+<div class="chuches">
+    <div class="chuche" *ngFor="let chuche of chuches">
+        <img [src]="chuche.archivo">
+        <h1>{{ chuche.nombre }}</h1>
+        <h2>Cantidad: {{ chuche.cantidad }}</h2>
+        <h2>Puntos: {{ chuche.puntos }}</h2>
+    </div>
+</div>
+
+<div class="xuxemons">
+    <div class="xuxemon" *ngFor="let xuxemon of xuxemons">
+        <img [src]="xuxemon.archivo" [ngClass]="{'pequenio': xuxemon.tamanio === 'pequenio', 'mediano': xuxemon.tamanio === 'mediano','grande': xuxemon.tamanio === 'grande'}">
+        <h1>{{ xuxemon.nombre }}</h1>
+        <h2 *ngIf="xuxemon.tamanio === 'pequenio'">{{ 'pequeño' | uppercase }}</h2>
+        <h2 *ngIf="xuxemon.tamanio !== 'pequenio'">{{ xuxemon.tamanio | uppercase }}</h2>
+        <h2 [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | uppercase }}</h2>
+    </div>
+</div>
+
+<div class="f">
+    <form class="form" [formGroup]="form" (ngSubmit)="alimentarXuxemon()">
+        <h1>Alimentar Xuxemon:</h1>
+        <label>Xuxemon</label>
+        <select formControlName="id_xuxemon">
+            <option *ngFor="let xuxemon of xuxemons" [value]="xuxemon.pivot.id">{{ xuxemon.nombre }} - {{ xuxemon.tamanio }}</option>
+        </select>
+    
+        <label>Chuche</label>
+        <select formControlName="id_chuche">
+            <option *ngFor="let chuche of chuches" [value]="chuche.pivot.id">{{ chuche.nombre }} - {{ chuche.puntos }}</option>
+        </select>
+
+        <input type="submit" value="Alimentar Xuxemon">
+    </form>
+</div>

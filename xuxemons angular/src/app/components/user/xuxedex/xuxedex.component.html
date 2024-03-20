@@ -7,20 +7,3 @@
         <h2 [ngClass]="{'tierra': xuxemon.tipo === 'tierra', 'agua': xuxemon.tipo === 'agua', 'aire': xuxemon.tipo === 'aire'}">{{ xuxemon.tipo | uppercase }}</h2>
     </div>
 </div>
-
-<div class="f">
-    <form class="form" [formGroup]="form" (ngSubmit)="alimentarXuxemon()">
-        <h1>Alimentar Xuxemon:</h1>
-        <label>Xuxemon</label>
-        <select formControlName="id_xuxemon">
-            <option *ngFor="let xuxemon of xuxemons" [value]="xuxemon.pivot.id">{{ xuxemon.nombre }} - {{ xuxemon.tamanio }}</option>
-        </select>
-    
-        <label>Chuche</label>
-        <select formControlName="id_chuche">
-            <option *ngFor="let chuche of chuches" [value]="chuche.pivot.id">{{ chuche.nombre }} - {{ chuche.puntos }}</option>
-        </select>
-
-        <input type="submit" value="Alimentar Xuxemon">
-    </form>
-</div>

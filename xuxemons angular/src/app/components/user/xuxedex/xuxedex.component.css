@@ -64,19 +64,3 @@ h2 {
 .grande{
     height: 100px;
 }
-
-.f {
-    display: flex;
-    justify-content: center;
-}
-
-.form {
-    background: #fff;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    padding: 2em;
-    border-radius: 25px;
-    text-align: center;
-    gap: 1em;
-}
